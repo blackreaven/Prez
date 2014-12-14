@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Optimise tes outils</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -16,9 +16,9 @@
 
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
-
+		<link rel="stylesheet" href="css/theme/blood.css" id="theme">
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="lib/css/monokai_sublime.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
@@ -43,316 +43,453 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
+					<h1>Optimise tes outils</h1>
+					<h3>Présentation des outils unix qui vous facilite la vie un fois configuré</h3>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						<small>Created by <a href="http://blackreaven.ovh">blackreaven</a> / <a href="http://github.com/blackreaven">blackreaven</a></small>
 					</p>
 				</section>
-
 				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
-
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
-
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
+					<h2>Les outils</h2>
 					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
-
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
-
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
+							<li class="fragment">Rappel des commande unix</li>
+						    <li class="fragment">Les éditeur en cli</li>
+							<li class="fragment">Les shells</li>
+							<li class="fragment">SSH</li>
+							<li class="fragment">Les lecteurs de log</li>
+							<li class="fragment">Les outils de monitoring</li>
 						</ol>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
+                        <p>
+							<img class="fragment" src="http://www.tux-planet.fr/public/images/humour/joies-informatique/code-22.gif" alt="">
+						</p>
+				</section>
+				<section>
+					<section>
+						<h2>Rappel des commandes linux</h2>
+						<ol>
+							<li>Listing de fichiers</li>
+							<li>Création/Suppression de fichiers/répertoires</li>
+							<li>Déplacement, liens et copie de fichiers</li>
+							<li>Affichage et recherche dans des fichiers</li>
+							<li>Recherche de fichiers</li>
+							<li>Gestion des archives</li>
+						</ol>
 					</section>
 					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
+						<h2>Listing de fichiers</h2>
+						<p>Sur un environnement unix la commande permettant le listing est <code>ls</code>. Voici quelque exemple d'utilisation :</p>
+						<ol>
+							<li><code>ls [pattern]</code> : liste les fichier correspondant au pattern</li>
+							<li><code>ls -1 [pattern]</code> : liste les fichier mais affiche la liste avec 1 item par ligne</li>
+							<li><code>ls -l[h] [pattern]</code> : listing avec un format long</li>
+							<li><code>ls -a [pattern]</code> : listing des fichiers cachés</li>
+							<li><code>ls -R [pattern]</code> : listing récursif</li>
+							<li><code>ls --color=auto [pattern]</code> : Ajout de la coloration</li>
+						</ol>
+					</section>
+					<section>
+						<h2>Création/Suppression de fichiers/répertoires</h2>
+						<p>La creéation: <br>
+							<pre><code class="hljs shell">
+touch filename #création d'un fichier vide
+echo "Hello" > filename #remplace le contenu du fcihier
+echo "Hello" >> filename #ajoute le contenu au fichier
+mkdir [-p] dirpath #création d'un répertoire vide.
+							</code></pre>
+						</p>
+						<p>La suppression : <br>
+						<pre><code class="hljs shell">
+rm [-rf] [filename|dirpath] #création d'un fichier vide
+rmdir [-p] dirpath #création d'un répertoire vide
+						</code></pre>
+						</p>
+
+					</section>
+					<section>
+						<h2>Déplacement, liens et copie de fichier</h2>
+						<p>Le déplacement/copie: <br>
+						<pre><code>
+mv [-v] source destination #déplace source vers destination
+cp [-rv] source destination #déplace source vers destination
+						</code></pre>
+						</p>
+						<p>Les liens : <br>
+						<pre><code>
+ln [-s] source destination #création d'un lien dans destination qui point sur source
+						</code></pre>
+						</p>
+					</section>
+					<section>
+						<h2>Affichage et recherche dans des fichier</h2>
+						<p>Affichage du contenu d'un fichier : <br>
+						<pre><code>
+cat filename #affiche le fichier
+more filename
+less filname
+						</code></pre>
+						</p>
+						<p>Recherche : <br>
+							<pre><code>
+cat filename|grep search
+							</code></pre>
+						</p>
+					</section>
+					<section>
+						<h2>Recherche de fichier</h2>
+					</section>
+					<section>
+						<p><img src="http://media-cache-ec0.pinimg.com/736x/cd/eb/3d/cdeb3d13af72f4f50862f017d1920820.jpg" alt=""></p>
 					</section>
 				</section>
-
 				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
+					<section>
+						<h2>Les éditeur de text cli</h2>
+						<ol>
+							<li>Vim</li>
+							<li>Nano</li>
+						</ol>
+					</section>
+					<section>
+						<h2>Vim</h2>
+						<p>
+						Vim est une version améliorée de l'un des plus anciens éditeurs en console : « Vi » (prononcez les lettres en anglais « Vi aille »). Vim (VI iMproved, version améliorée de Vi) est largement répandu et généralement disponible par défaut sur la plupart des OS basés sur Unix, comme Linux.</p>
+						<p>
+						Vim est un éditeur très puissant qui a trop de commandes pour pouvoir toutes les expliquer ici.
+						</p>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Vim : commande de base
+						| Commande   | Mode    | Action                |
+						|-------------|---------|-----|
+						| `:w`       |Commande | Sauvegarde du fichier |
+						| `:q`       |Commande | Quitter vim           |
+						| `u`        |Commande| Annuler|
+						| `U`        |Commande| Refaire|
+						| `gg`       |Commande| Aller à la premiere ligne|
+						| `G`        |Commande| Aller à la dernière ligne|
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Vim : commande de base
+						| Commande   | Mode    | Action                |
+						|-------------|---------|-----|
+						| `y`        |Visuel| Copier|
+						| `yy`       |Commande| Copier la ligne|
+						| `Y`        |Commande| Copier la ligne|
+						| `d`        |Visuel| Couper|
+						| `dd`       |Commande| Couper la ligne|
+						| `D`        |Commande| Couper la ligne|
+						| `p`        |Visuel/Commande| Coller|
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Vim : commande de base
+						| Commande   | Mode    | Action                |
+						|-------------|---------|-----|
+						| `/{text}`       |Commande | recherche  |
+						| `/` | Commande | Terme suivant de la recherhche |
+						| `:%s/search/replace/g` | Commande | rechercher remplacer |
+						| `:%s/search/replace/gc` | Commande | rechercher remplacer avec confirmation |
+						| `:%s/\\search\\/replace/g` | Commande | rechercher exactement search et le remplacer |
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Vim : commande de base
+						| Commande   | Mode    | Action                |
+						|-------------|---------|-----|
+						| `gg=G`       |Commande | indentation automatique du fichier |
+						| `Ctrl+n`       |Edition | autocompletion |
+						</script>
+					</section>
 
+
+					<section data-markdown>
+						<script type="text/template">
+						## Vim : configuration
+
+						Le fichier de configuration de vim est $HOME/.vimrc.
+
+						##### Ajouter des raccourci clavier
+						```
+						:map  -
+						:map! -
+						:nmap - Display normal mode maps
+						:imap - Display insert mode maps
+						:vmap - Display visual and select mode maps
+						:smap - Display select mode maps
+						:xmap - Display visual mode maps
+						:cmap - Display command-line mode maps
+						:omap - Display operator pending mode maps
+						```
+						</script>
+					</section>
+					<section>
+						<h2>Vim - Plugins</h2>
+						<p>
+							Vim intègre un système de plugin permettant d'étendre ses fonctionnalité
+							<ol>
+								<li><strong>Pathogen : </strong> Il permet de simplifier l'installation de plugin</li>
+								<li><strong>NERDTree : </strong> Permet d'avoir un sidebar avec l'arborescences du repertoire</li>
+								<li><strong>Powerline : </strong> Permet d'avoir un sidebar avec l'arborescences du repertoire</li>
+								<li><strong>Fugitive : </strong> Permet d'avoir la gestion de git</li>
+							</ol>
+						</p>
+					</section>
+
+					<section>
+						SCREENSHOT comparaison vim et vim configuré
+					</section>
+					<section>
+						<h2>Nano</h2>
+						<p>
+							Nano est un editeur en ligne de commande plus abordable que vim, mais aussi moins customisable.
+						</p>
+					</section>
+					<section>
+						<h2>Nano - Configuration</h2>
+						<p>
+							La configuration ce passe dans le fichier ~/.nanorc. Un documentation officiel pour la configuration de nano est présente <a href="http://www.nano-editor.org/dist/v2.1/nanorc.5.html">ici</a> (http://www.nano-editor.org/dist/v2.1/nanorc.5.html)
+						</p>
+					</section>
+					<section>
+						SCREENSHOT nano configuré
+					</section>
+				</section>
 				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Les Shell
+						* Bash
+						* Zsh
+						* Fish
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Bash
+						Bash est le shell par defaut de nombreuse distribution linux.
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Zsh
+						Zsh est le shell qui se veut plus user-friendly. Zsh permet de nombreuse customisation et ajout de fonction. La configuration zsh ce fait dans un fichier ```~/.zshrc``.
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Zsh : antigen et oh-my-zsh
 
+						Antigen et oh-my-zsh sont des framework de customisation de zsh.
+
+						Installation de antigen :
+						```git clone https://github.com/zsh-users/antigen.git ~/.antigen```
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Zsh : antigen et oh-my-zsh
+
+						Modification .zshrc :
+						```
+						source ~/.antigen/antigen.zsh
+
+						# Load the oh-my-zsh's library.
+						antigen use oh-my-zsh
+
+						# Bundles from the default repo (robbyrussell's oh-my-zsh).
+						antigen use oh-my-zsh
+
+						antigen bundle git
+						antigen bundle symfony2
+						antigen bundle git-flow
+						antigen bundle ruby
+						antigen bundle rvm
+						antigen bundle command-not-found
+						antigen bundle zsh-users/zsh-syntax-highlighting
+
+						antigen theme candy
+
+						antigen apply
+						```
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+						## Fish
+
+						Fish est un autre shell alternatif qui a plusieur avantage :
+						* La configuration par defaut est correcte
+						* Une interface web pour configurer
+
+						</script>
+					</section>
+				</section>
 				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
+					<section data-markdown>
+						<script type="text/template">
+						## SSH
 
+						* Utilisation basique
+						* Configuration
+						</script>
+					</section>
+					<section>
+						<h2>SSH </h2>
+						<pre><code class="hljs shell">
+# connection ssh de username sur host avec le port
+ssh [-i identity] username@host [-p port] 
+# Tunnel ssh 
+ssh -f -N -L local-port:host:remote-port username@host #tunnel ssh
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>SSH </h2>
+						SSH permet la gestion de clé pour se logger automatiquement
+						<pre><code class="hljs shell">
+# En local
+mkdir -p ~/.ssh
+ssh-keygen -t rsa 
+scp .ssh/[key].pub usernmae@host:~/
+ssh usernmae@host
+
+# Sur le serveur distant
+cat [key].pub >> ~/.ssh/authorized_key
+						</code></pre>
+					</section>
+					<section>
+						<h2>SSH config</h2>
+						La configuration de ssh permet egalement de simplifier la commande de connexion : 
+						<pre><code class="hljs shell">
+# Avant 
+ssh -i ~/.ssh/id_rsa root@server.example.com -p 2222
+# Apres 
+ssh server.example							
+						</code></pre>
+						Voici le fichier de config correspondant
+						<pre><code class="hljs shell">
+Host server.example
+	HostName server.example.com
+	User root
+	Port 2222
+	IdentityFile ~/.ssh/id_rsa			
+						</code></pre>
+					</section>
+				</section>
 				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
+					<section>
+						<h2>Les lecteur de log </h2>
+						<p>
+							Il existe de nombreux outils qui facilite la gestion/lecture de log.
+							<ul>
+								<li>ccze : ajoute de la coloration a vos log</li>
+								<li>glogg : outils graphique</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<h2>ccze</h2>
+						<p>
+							Installation :
+						</p>
+						<pre><code class="hljs shell">
+# Pour Mac
+brew install ccze
 
+# Pour debian/ubuntu
+apt-get install ccze
+						</code></pre>
+					</section>
+					<section>
+						<h2>ccze</h2>
+						<p>
+							Utilisation :
+						</p>
+						<pre><code class="hljs shell">
+# utilisation basique
+ccze &lt;/var/log/fichier.log
+ccze  &lt;/var/log/fichier.log |more
+
+# utilisation avec tail pour la lecture temps réel
+tail -n 40 -f /var/log/fichier.log |ccze
+
+# conversion en html
+ccze -h -o nolookups  &lt;/var/log/mail.log &gt;/var/www/logs/mail.log.html
+						</code></pre>
+					</section>
+					<section>
+						<h2>Glogg</h2>
+						<p>
+							Glogg est un outils graphique qui permet la lecture de log.
+							<a href="http://glogg.bonnefon.org/index.html">http://glogg.bonnefon.org/index.html</a>
+							<br>
+							Ces avantages :
+						</p>
+						<ul>
+							<li>Coloration syntaxique</li>
+							<li>Recherche avec expression regulier</li>
+							<li>Lecture directe depuis le disque dur (ne charge pas l'intégralité du fichier)</li>
+						</ul>
+						<p>Le seul inconvénient est que si l'on travaille sur un serveur il faut télécharger le fichier en local </p>
+					</section>
+					<section>
+						<img src="http://glogg.bonnefon.org/images/glogg_gtk.png" alt="">
+					</section>
+				</section>
 				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
-				</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Monitorer sa machine
 
+						* monitoring réseaux
+						* monitoring disque
+						* monitoring système
+						* Monitorer avec classe 
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Monitorer son réseaux
+						
+						* _connaitre les connexion ouverte_ : netstat
+						* _tester une connexion_ : netcat/telnet
+						* _savoir quels ports sont ouvert_ : nmap
+						* _connaitre la bande passante consommée_ : slurm
+						* _generer des rapport réseaux_ : vnstat
+						</script>
+					</section>
+					<section>
+						<h2>Netstat</h2>
+						<pre><code class="hljs shell">
+# Toute les connexion
+netstat -a
+# affiche la table de routage
+netstat -r
+# affiche les ip et pas domaine
+netstat -n
+# affiche les statistique
+netstat -s
+						</code></pre>
+					</section>
+					<section>
+						<h2>Netcat/telnet</h2>
+						<pre><code class="hljs shell">
+# connexion avec netcat
+nc -u host port
+# connexion avec telnet 
+telnet host port
+# 
+nc -l port
+						</code></pre>
+					</section>
+				</section>
 			</div>
 
 		</div>
@@ -369,6 +506,7 @@ function linkify( selector ) {
 				progress: true,
 				history: true,
 				center: true,
+				slideNumber: true,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
