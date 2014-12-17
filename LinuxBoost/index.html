@@ -203,6 +203,7 @@ cat filename|grep search
 						|-------------|---------|-----|
 						| `gg=G`       |Commande | indentation automatique du fichier |
 						| `Ctrl+n`       |Edition | autocompletion |
+						| :! command | Commande | execution d'une commande shell |
 						</script>
 					</section>
 
@@ -449,7 +450,6 @@ ccze -h -o nolookups  &lt;/var/log/mail.log &gt;/var/www/logs/mail.log.html
 						## Monitorer sa machine
 
 						* monitoring réseaux
-						* monitoring disque
 						* monitoring système
 						* Monitorer avec classe 
 						</script>
@@ -487,6 +487,36 @@ nc -u host port
 telnet host port
 # 
 nc -l port
+						</code></pre>
+					</section>
+					<section>
+						<h2>Nmap</h2>
+						<pre><code class="hljs shell">
+# scan silencieux
+nmap -sS host [-p port]
+						</code></pre>
+					</section>
+					<section>
+						<h2>Slurm / Vnstat</h2>
+						<pre><code class="hljs shell">
+# connexion avec netcat
+slurm -i interface
+
+# Déclaration de l'interface réseaux
+sudo vnstat -u -i eth0 --nick "Internet"
+
+sudo vnstat
+sudo vnstat -tr
+						</code></pre>
+					</section>
+					<section>
+						<h2>Monitoring système</h2>
+						<pre><code>
+# Information sur la ram
+free -th
+
+# Top ou htop - consomation mémoire par processus
+top 
 						</code></pre>
 					</section>
 				</section>
