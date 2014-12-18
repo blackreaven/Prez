@@ -108,13 +108,13 @@ rmdir [-p] dirpath #création d'un répertoire vide
 					<section>
 						<h2>Déplacement, liens et copie de fichier</h2>
 						<p>Le déplacement/copie: <br>
-						<pre><code>
+						<pre><code class="hljs shell">
 mv [-v] source destination #déplace source vers destination
 cp [-rv] source destination #déplace source vers destination
 						</code></pre>
 						</p>
 						<p>Les liens : <br>
-						<pre><code>
+						<pre><code class="hljs shell">
 ln [-s] source destination #création d'un lien dans destination qui point sur source
 						</code></pre>
 						</p>
@@ -122,14 +122,14 @@ ln [-s] source destination #création d'un lien dans destination qui point sur s
 					<section>
 						<h2>Affichage et recherche dans des fichier</h2>
 						<p>Affichage du contenu d'un fichier : <br>
-						<pre><code>
+						<pre><code class="hljs shell">
 cat filename #affiche le fichier
 more filename
 less filname
 						</code></pre>
 						</p>
 						<p>Recherche : <br>
-							<pre><code>
+							<pre><code class="hljs shell">
 cat filename | grep search
 cat /var/log/apache2/access.log | cut -d '-' -f1
 cat /var/log/apache2/access.log | awk -F '-' '{print $1}'
@@ -139,10 +139,34 @@ cat /var/log/apache2/access.log | awk -F '-' '{print $1}'
 					</section>
 					<section>
 						<h2>Recherche de fichier</h2>
-						<pre><code>
+						<pre><code class="hljs shell">
 # Rechercher un exécutable
 whereis convert
 
+find /var/log -size +1M -type f
+find . -perm 754
+find . -iname 'log' -maxdepth 2
+find . -name 'log' -maxdepth 2
+find . -user www-data
+find /var/log -size +1G -exec mv '{}' ~/bigfiles \;
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>Gestion des archives</h2>
+						<pre><code class="hljs shell">
+# Extraire un archive
+tar xzvf archive.tar.gz
+# Extraire qu'un seul fichier
+tar xvf archive.tar documents/work/file.txt
+# Ajouter file.txt dans archive.tar
+tar uvf archive.tar documents/work/file.txt
+# Creation d'une archive
+tar cvf archive.tar ~/documents/work/*.txt
+# Creation d'une archive zippé
+tar cvfz archive.tar.gz ~/documents/work/*.txt
+
+unzip archive.zip
 						</code></pre>
 					</section>
 					<section>
@@ -211,7 +235,8 @@ whereis convert
 						|-------------|---------|-----|
 						| `gg=G`       |Commande | Indentation automatique du fichier |
 						| `Ctrl+n`       |Edition | Autocomplétion |
-						| :! command | Commande | Exécution d'une commande ```shell``` |
+						| :! command | Commande | Exécuter une commande ```shell``` |
+
 						</script>
 					</section>
 
@@ -250,7 +275,10 @@ whereis convert
 					</section>
 
 					<section>
-						SCREENSHOT comparaison vim et vim configuré
+						<img src="images/vim.png" alt="">
+					</section>
+					<section>
+						<img src="https://raw.githubusercontent.com/humiaozuzu/dot-vimrc/master/screenshots/vim.jpg" alt="">
 					</section>
 					<section>
 						<h2>Nano</h2>
@@ -265,7 +293,7 @@ whereis convert
 						</p>
 					</section>
 					<section>
-						SCREENSHOT nano configuré
+						<img src="http://www.linuxsoft.cz/screenshot_img/857-a.jpg" alt="">
 					</section>
 				</section>
 				<section>
@@ -277,11 +305,20 @@ whereis convert
 						* Fish
 						</script>
 					</section>
-					<section data-markdown>
-						<script type="text/template">
-						## Bash
-						Bash est le shell par défaut de nombreuses distributions Linux.
-						</script>
+					<section>
+						<h2>Bash</h2>
+						Bash est le shell par défaut de nombreuses distributions Linux. La configuration permet de créer des commandes et alias.
+						<pre><code class="hljs shell">
+alias fuck='sudo !!'
+alias ll='ls -lah'
+alias ezcc='php ezpublish/console cache:clear'
+alias sfcc='php app/console cache:clear'
+						</code></pre>
+						Les petit raccourci bash :
+						<pre><code class="shell hljs">
+							!! # dernière commande
+							!$ # dernier paramètre de la commande précédente
+						</code></pre>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
@@ -296,24 +333,22 @@ whereis convert
 						Antigen et oh-my-zsh sont des frameworks de customisation de zsh.
 
 						Installation de antigen :
-						```git clone https://github.com/zsh-users/antigen.git ~/.antigen```
+						`git clone https://github.com/zsh-users/antigen.git ~/.antigen`
+
 
 						</script>
 					</section>
-					<section data-markdown>
-						<script type="text/template">
-						## Zsh : antigen et oh-my-zsh
+					<section>
+						<h2>Zsh : antigen et oh-my-zsh</h2>
 
-						Modification .zshrc :
-						```
+						<p>Modification .zshrc :</p>
+						<pre><code class="hljs shell">
 						source ~/.antigen/antigen.zsh
 
 						# Load the oh-my-zsh's library.
 						antigen use oh-my-zsh
-
 						# Bundles from the default repo (robbyrussell's oh-my-zsh).
 						antigen use oh-my-zsh
-
 						antigen bundle git
 						antigen bundle symfony2
 						antigen bundle git-flow
@@ -321,12 +356,9 @@ whereis convert
 						antigen bundle rvm
 						antigen bundle command-not-found
 						antigen bundle zsh-users/zsh-syntax-highlighting
-
 						antigen theme candy
-
 						antigen apply
-						```
-						</script>
+						</code></pre>
 					</section>
 
 					<section data-markdown>
@@ -336,7 +368,6 @@ whereis convert
 						Fish est un autre shell alternatif qui a plusieurs avantages :
 						* La configuration par défaut est correcte
 						* Une interface web pour configurer
-
 						</script>
 					</section>
 				</section>
@@ -353,8 +384,8 @@ whereis convert
 						<h2>SSH </h2>
 						<pre><code class="hljs shell">
 # connection ssh de username sur host avec le port
-ssh [-i identity] username@host [-p port] 
-# Tunnel ssh 
+ssh [-i identity] username@host [-p port]
+# Tunnel ssh
 ssh -f -N -L local-port:host:remote-port username@host #tunnel ssh
 						</code></pre>
 					</section>
@@ -365,7 +396,7 @@ ssh -f -N -L local-port:host:remote-port username@host #tunnel ssh
 						<pre><code class="hljs shell">
 # En local
 mkdir -p ~/.ssh
-ssh-keygen -t rsa 
+ssh-keygen -t rsa
 scp .ssh/[key].pub usernmae@host:~/
 ssh usernmae@host
 
@@ -377,10 +408,10 @@ cat [key].pub >> ~/.ssh/authorized_key
 						<h2>SSH config</h2>
 						La configuration de ssh permet également de simplifier la commande de connexion :
 						<pre><code class="hljs shell">
-# Avant 
+# Avant
 ssh -i ~/.ssh/id_rsa root@server.example.com -p 2222
-# Apres 
-ssh server.example							
+# Apres
+ssh server.example
 						</code></pre>
 						Voici le fichier de config correspondant :
 						<pre><code class="hljs shell">
@@ -388,7 +419,7 @@ Host server.example
 	HostName server.example.com
 	User root
 	Port 2222
-	IdentityFile ~/.ssh/id_rsa			
+	IdentityFile ~/.ssh/id_rsa
 						</code></pre>
 					</section>
 				</section>
@@ -459,13 +490,13 @@ ccze -h -o nolookups  &lt;/var/log/mail.log &gt;/var/www/logs/mail.log.html
 
 						* Monitoring réseaux
 						* Monitoring système
-						* Monitorer avec classe 
+						* Monitorer avec classe
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
 						## Monitorer son réseau
-						
+
 						* _connaitre les connexions ouvertes_ : netstat
 						* _tester une connexion_ : netcat/telnet
 						* _savoir quels ports sont ouverts_ : nmap
@@ -491,9 +522,9 @@ netstat -s
 						<pre><code class="hljs shell">
 # connexion avec netcat
 nc -u host port
-# connexion avec telnet 
+# connexion avec telnet
 telnet host port
-# 
+#
 nc -l port
 						</code></pre>
 					</section>
@@ -524,9 +555,16 @@ sudo vnstat -tr
 free -th
 
 # top ou htop - consommation mémoire par processus
-top 
+top
 						</code></pre>
 					</section>
+
+					<section>
+						<img src="http://fc06.deviantart.net/fs70/f/2010/219/1/e/Conky__Conky__Conky_by_YesThisIsMe.png" alt="">
+					</section>
+				</section>
+				<section>
+					<h1>Question ?</h1>
 				</section>
 			</div>
 
