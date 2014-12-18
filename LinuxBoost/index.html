@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Optimise tes outils</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/blood.css" id="theme">
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/monokai_sublime.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Optimise tes outils</h1>
+					<h3>Présentation des outils unix qui vous facilite la vie un fois configuré</h3>
+					<p>
+						<small>Created by <a href="http://blackreaven.ovh">blackreaven</a> / <a href="http://github.com/blackreaven">blackreaven</a></small>
+					</p>
+				</section>
+				<section>
+					<h2>Les outils</h2>
+					<ol>
+							<li class="fragment">Rappel des commande unix</li>
+						    <li class="fragment">Les éditeur en cli</li>
+							<li class="fragment">Les shells</li>
+							<li class="fragment">SSH</li>
+							<li class="fragment">Les lecteurs de log</li>
+							<li class="fragment">Les outils de monitoring</li>
+						</ol>
+                        <p>
+							<img class="fragment" src="http://www.tux-planet.fr/public/images/humour/joies-informatique/code-22.gif" alt="">
+						</p>
+				</section>
+				<section>
+					<section>
+						<h2>Rappel des commandes linux</h2>
+						<ol>
+							<li>Listing de fichiers</li>
+							<li>Création/Suppression de fichiers/répertoires</li>
+							<li>Déplacement, liens et copie de fichiers</li>
+							<li>Affichage et recherche dans des fichiers</li>
+							<li>Recherche de fichiers</li>
+							<li>Gestion des archives</li>
+						</ol>
+					</section>
+					<section>
+						<h2>Listing de fichiers</h2>
+						<p>Sur un environnement unix la commande permettant le listing est <code>ls</code>. Voici quelque exemple d'utilisation :</p>
+						<ol>
+							<li><code>ls [pattern]</code> : liste les fichier correspondant au pattern</li>
+							<li><code>ls -1 [pattern]</code> : liste les fichier mais affiche la liste avec 1 item par ligne</li>
+							<li><code>ls -l[h] [pattern]</code> : listing avec un format long</li>
+							<li><code>ls -a [pattern]</code> : listing des fichiers cachés</li>
+							<li><code>ls -R [pattern]</code> : listing récursif</li>
+							<li><code>ls --color=auto [pattern]</code> : Ajout de la coloration</li>
+						</ol>
+					</section>
+					<section>
+						<h2>Création/Suppression de fichiers/répertoires</h2>
+						<p>La creéation: <br>
+							<pre><code class="hljs shell">
+touch filename #création d'un fichier vide
+echo "Hello" > filename #remplace le contenu du fcihier
+echo "Hello" >> filename #ajoute le contenu au fichier
+mkdir [-p] dirpath #création d'un répertoire vide.
+							</code></pre>
+						</p>
+						<p>La suppression : <br>
+						<pre><code class="hljs shell">
+rm [-rf] [filename|dirpath] #création d'un fichier vide
+rmdir [-p] dirpath #création d'un répertoire vide
+						</code></pre>
+						</p>
+
+					</section>
+					<section>
+						<h2>Déplacement, liens et copie de fichier</h2>
+						<p>Le déplacement/copie: <br>
+						<pre><code>
+mv [-v] source destination #déplace source vers destination
+cp [-rv] source destination #déplace source vers destination
+						</code></pre>
+						</p>
+						<p>Les liens : <br>
+						<pre><code>
+ln [-s] source destination #création d'un lien dans destination qui point sur source
+						</code></pre>
+						</p>
+					</section>
+					<section>
+						<h2>Affichage et recherche dans des fichier</h2>
+						<p>Affichage du contenu d'un fichier : <br>
+						<pre><code>
+cat filename #affiche le fichier
+more filename
+less filname
+						</code></pre>
+						</p>
+						<p>Recherche : <br>
+							<pre><code>
+cat filename | grep search
+cat /var/log/apache2/access.log | cut -d '-' -f1
+cat /var/log/apache2/access.log | awk -F '-' '{print $1}'
+
+							</code></pre>
+						</p>
+					</section>
+					<section>
+						<h2>Recherche de fichier</h2>
+						<pre><code>
+# Rechercher un excutable
+whereis convert
+
+						</code></pre>
+					</section>
+					<section>
+						<p><img src="http://media-cache-ec0.pinimg.com/736x/cd/eb/3d/cdeb3d13af72f4f50862f017d1920820.jpg" alt=""></p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Les éditeur de text cli</h2>
+						<ol>
+							<li>Vim</li>
+							<li>Nano</li>
+						</ol>
+					</section>
+					<section>
+						<h2>Vim</h2>
+						<p>
+						Vim est une version améliorée de l'un des plus anciens éditeurs en console : « Vi » (prononcez les lettres en anglais « Vi aille »). Vim (VI iMproved, version améliorée de Vi) est largement répandu et généralement disponible par défaut sur la plupart des OS basés sur Unix, comme Linux.</p>
+						<p>
+						Vim est un éditeur très puissant qui a trop de commandes pour pouvoir toutes les expliquer ici.
+						</p>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Vim : commande de base
+						| Commande   | Mode    | Action                |
+						|-------------|---------|-----|
+						| `:w`       |Commande | Sauvegarde du fichier |
+						| `:q`       |Commande | Quitter vim           |
+						| `u`        |Commande| Annuler|
+						| `U`        |Commande| Refaire|
+						| `gg`       |Commande| Aller à la premiere ligne|
+						| `G`        |Commande| Aller à la dernière ligne|
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Vim : commande de base
+						| Commande   | Mode    | Action                |
+						|-------------|---------|-----|
+						| `y`        |Visuel| Copier|
+						| `yy`       |Commande| Copier la ligne|
+						| `Y`        |Commande| Copier la ligne|
+						| `d`        |Visuel| Couper|
+						| `dd`       |Commande| Couper la ligne|
+						| `D`        |Commande| Couper la ligne|
+						| `p`        |Visuel/Commande| Coller|
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Vim : commande de base
+						| Commande   | Mode    | Action                |
+						|-------------|---------|-----|
+						| `/{text}`       |Commande | recherche  |
+						| `/` | Commande | Terme suivant de la recherhche |
+						| `:%s/search/replace/g` | Commande | rechercher remplacer |
+						| `:%s/search/replace/gc` | Commande | rechercher remplacer avec confirmation |
+						| `:%s/\\search\\/replace/g` | Commande | rechercher exactement search et le remplacer |
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Vim : commande de base
+						| Commande   | Mode    | Action                |
+						|-------------|---------|-----|
+						| `gg=G`       |Commande | indentation automatique du fichier |
+						| `Ctrl+n`       |Edition | autocompletion |
+						| :! command | Commande | execution d'une commande shell |
+						</script>
+					</section>
+
+
+					<section data-markdown>
+						<script type="text/template">
+						## Vim : configuration
+
+						Le fichier de configuration de vim est $HOME/.vimrc.
+
+						##### Ajouter des raccourci clavier
+						```
+						:map  -
+						:map! -
+						:nmap - Display normal mode maps
+						:imap - Display insert mode maps
+						:vmap - Display visual and select mode maps
+						:smap - Display select mode maps
+						:xmap - Display visual mode maps
+						:cmap - Display command-line mode maps
+						:omap - Display operator pending mode maps
+						```
+						</script>
+					</section>
+					<section>
+						<h2>Vim - Plugins</h2>
+						<p>
+							Vim intègre un système de plugin permettant d'étendre ses fonctionnalité
+							<ol>
+								<li><strong>Pathogen : </strong> Il permet de simplifier l'installation de plugin</li>
+								<li><strong>NERDTree : </strong> Permet d'avoir un sidebar avec l'arborescences du repertoire</li>
+								<li><strong>Powerline : </strong> Permet d'avoir un sidebar avec l'arborescences du repertoire</li>
+								<li><strong>Fugitive : </strong> Permet d'avoir la gestion de git</li>
+							</ol>
+						</p>
+					</section>
+
+					<section>
+						SCREENSHOT comparaison vim et vim configuré
+					</section>
+					<section>
+						<h2>Nano</h2>
+						<p>
+							Nano est un editeur en ligne de commande plus abordable que vim, mais aussi moins customisable.
+						</p>
+					</section>
+					<section>
+						<h2>Nano - Configuration</h2>
+						<p>
+							La configuration ce passe dans le fichier ~/.nanorc. Un documentation officiel pour la configuration de nano est présente <a href="http://www.nano-editor.org/dist/v2.1/nanorc.5.html">ici</a> (http://www.nano-editor.org/dist/v2.1/nanorc.5.html)
+						</p>
+					</section>
+					<section>
+						SCREENSHOT nano configuré
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+						## Les Shell
+						* Bash
+						* Zsh
+						* Fish
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Bash
+						Bash est le shell par defaut de nombreuse distribution linux.
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Zsh
+						Zsh est le shell qui se veut plus user-friendly. Zsh permet de nombreuse customisation et ajout de fonction. La configuration zsh ce fait dans un fichier ```~/.zshrc``.
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Zsh : antigen et oh-my-zsh
+
+						Antigen et oh-my-zsh sont des framework de customisation de zsh.
+
+						Installation de antigen :
+						```git clone https://github.com/zsh-users/antigen.git ~/.antigen```
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Zsh : antigen et oh-my-zsh
+
+						Modification .zshrc :
+						```
+						source ~/.antigen/antigen.zsh
+
+						# Load the oh-my-zsh's library.
+						antigen use oh-my-zsh
+
+						# Bundles from the default repo (robbyrussell's oh-my-zsh).
+						antigen use oh-my-zsh
+
+						antigen bundle git
+						antigen bundle symfony2
+						antigen bundle git-flow
+						antigen bundle ruby
+						antigen bundle rvm
+						antigen bundle command-not-found
+						antigen bundle zsh-users/zsh-syntax-highlighting
+
+						antigen theme candy
+
+						antigen apply
+						```
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+						## Fish
+
+						Fish est un autre shell alternatif qui a plusieur avantage :
+						* La configuration par defaut est correcte
+						* Une interface web pour configurer
+
+						</script>
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+						## SSH
+
+						* Utilisation basique
+						* Configuration
+						</script>
+					</section>
+					<section>
+						<h2>SSH </h2>
+						<pre><code class="hljs shell">
+# connection ssh de username sur host avec le port
+ssh [-i identity] username@host [-p port] 
+# Tunnel ssh 
+ssh -f -N -L local-port:host:remote-port username@host #tunnel ssh
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>SSH </h2>
+						SSH permet la gestion de clé pour se logger automatiquement
+						<pre><code class="hljs shell">
+# En local
+mkdir -p ~/.ssh
+ssh-keygen -t rsa 
+scp .ssh/[key].pub usernmae@host:~/
+ssh usernmae@host
+
+# Sur le serveur distant
+cat [key].pub >> ~/.ssh/authorized_key
+						</code></pre>
+					</section>
+					<section>
+						<h2>SSH config</h2>
+						La configuration de ssh permet egalement de simplifier la commande de connexion : 
+						<pre><code class="hljs shell">
+# Avant 
+ssh -i ~/.ssh/id_rsa root@server.example.com -p 2222
+# Apres 
+ssh server.example							
+						</code></pre>
+						Voici le fichier de config correspondant
+						<pre><code class="hljs shell">
+Host server.example
+	HostName server.example.com
+	User root
+	Port 2222
+	IdentityFile ~/.ssh/id_rsa			
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Les lecteur de log </h2>
+						<p>
+							Il existe de nombreux outils qui facilite la gestion/lecture de log.
+							<ul>
+								<li>ccze : ajoute de la coloration a vos log</li>
+								<li>glogg : outils graphique</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<h2>ccze</h2>
+						<p>
+							Installation :
+						</p>
+						<pre><code class="hljs shell">
+# Pour Mac
+brew install ccze
+
+# Pour debian/ubuntu
+apt-get install ccze
+						</code></pre>
+					</section>
+					<section>
+						<h2>ccze</h2>
+						<p>
+							Utilisation :
+						</p>
+						<pre><code class="hljs shell">
+# utilisation basique
+ccze &lt;/var/log/fichier.log
+ccze  &lt;/var/log/fichier.log |more
+
+# utilisation avec tail pour la lecture temps réel
+tail -n 40 -f /var/log/fichier.log |ccze
+
+# conversion en html
+ccze -h -o nolookups  &lt;/var/log/mail.log &gt;/var/www/logs/mail.log.html
+						</code></pre>
+					</section>
+					<section>
+						<h2>Glogg</h2>
+						<p>
+							Glogg est un outils graphique qui permet la lecture de log.
+							<a href="http://glogg.bonnefon.org/index.html">http://glogg.bonnefon.org/index.html</a>
+							<br>
+							Ces avantages :
+						</p>
+						<ul>
+							<li>Coloration syntaxique</li>
+							<li>Recherche avec expression regulier</li>
+							<li>Lecture directe depuis le disque dur (ne charge pas l'intégralité du fichier)</li>
+						</ul>
+						<p>Le seul inconvénient est que si l'on travaille sur un serveur il faut télécharger le fichier en local </p>
+					</section>
+					<section>
+						<img src="http://glogg.bonnefon.org/images/glogg_gtk.png" alt="">
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+						## Monitorer sa machine
+
+						* monitoring réseaux
+						* monitoring système
+						* Monitorer avec classe 
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Monitorer son réseaux
+						
+						* _connaitre les connexion ouverte_ : netstat
+						* _tester une connexion_ : netcat/telnet
+						* _savoir quels ports sont ouvert_ : nmap
+						* _connaitre la bande passante consommée_ : slurm
+						* _generer des rapport réseaux_ : vnstat
+						</script>
+					</section>
+					<section>
+						<h2>Netstat</h2>
+						<pre><code class="hljs shell">
+# Toute les connexion
+netstat -a
+# affiche la table de routage
+netstat -r
+# affiche les ip et pas domaine
+netstat -n
+# affiche les statistique
+netstat -s
+						</code></pre>
+					</section>
+					<section>
+						<h2>Netcat/telnet</h2>
+						<pre><code class="hljs shell">
+# connexion avec netcat
+nc -u host port
+# connexion avec telnet 
+telnet host port
+# 
+nc -l port
+						</code></pre>
+					</section>
+					<section>
+						<h2>Nmap</h2>
+						<pre><code class="hljs shell">
+# scan silencieux
+nmap -sS host [-p port]
+						</code></pre>
+					</section>
+					<section>
+						<h2>Slurm / Vnstat</h2>
+						<pre><code class="hljs shell">
+# connexion avec netcat
+slurm -i interface
+
+# Déclaration de l'interface réseaux
+sudo vnstat -u -i eth0 --nick "Internet"
+
+sudo vnstat
+sudo vnstat -tr
+						</code></pre>
+					</section>
+					<section>
+						<h2>Monitoring système</h2>
+						<pre><code>
+# Information sur la ram
+free -th
+
+# Top ou htop - consomation mémoire par processus
+top 
+						</code></pre>
+					</section>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
