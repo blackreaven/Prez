@@ -130,12 +130,20 @@ less filname
 						</p>
 						<p>Recherche : <br>
 							<pre><code>
-cat filename|grep search
+cat filename | grep search
+cat /var/log/apache2/access.log | cut -d '-' -f1
+cat /var/log/apache2/access.log | awk -F '-' '{print $1}'
+
 							</code></pre>
 						</p>
 					</section>
 					<section>
 						<h2>Recherche de fichier</h2>
+						<pre><code>
+# Rechercher un excutable
+whereis convert
+
+						</code></pre>
 					</section>
 					<section>
 						<p><img src="http://media-cache-ec0.pinimg.com/736x/cd/eb/3d/cdeb3d13af72f4f50862f017d1920820.jpg" alt=""></p>
