@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 		<link rel="stylesheet" href="css/theme/blood.css" id="theme">
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/monokai_sublime.css">
+		<link rel="stylesheet" href="lib/css/zenburn.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
@@ -78,14 +78,14 @@
 					<section>
 						<h2>Listing de fichiers</h2>
 						<p>Sur un environnement unix la commande permettant le listing est <code>ls</code>. Voici quelque exemple d'utilisation :</p>
-						<ol>
-							<li><code>ls [pattern]</code> : liste les fichier correspondant au pattern</li>
-							<li><code>ls -1 [pattern]</code> : liste les fichier mais affiche la liste avec 1 item par ligne</li>
-							<li><code>ls -l[h] [pattern]</code> : listing avec un format long</li>
-							<li><code>ls -a [pattern]</code> : listing des fichiers cachés</li>
-							<li><code>ls -R [pattern]</code> : listing récursif</li>
-							<li><code>ls --color=auto [pattern]</code> : ajout de la coloration</li>
-						</ol>
+						<pre><code class="shell hljs">
+							ls [pattern] # liste les fichier correspondant au pattern
+							ls -1 [pattern] # liste les fichier mais affiche la liste avec 1 item par ligne
+							ls -l[h] [pattern] # listing avec un format long
+							ls -a [pattern] # listing des fichiers cachés
+							ls -R [pattern] # listing récursif
+							ls --color=auto [pattern] # ajout de la coloration
+						</code></pre>
 					</section>
 					<section>
 						<h2>Création/Suppression de fichiers/répertoires</h2>
