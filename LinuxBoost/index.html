@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 		<link rel="stylesheet" href="css/theme/blood.css" id="theme">
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/monokai_sublime.css">
+		<link rel="stylesheet" href="lib/css/zenburn.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
@@ -44,7 +44,7 @@
 			<div class="slides">
 				<section>
 					<h1>Optimise tes outils</h1>
-					<h3>Présentation des outils unix qui vous facilite la vie un fois configuré</h3>
+					<h3>Présentation des outils unix qui vous facilitent la vie une fois configurés</h3>
 					<p>
 						<small>Created by <a href="http://blackreaven.ovh">blackreaven</a> / <a href="http://github.com/blackreaven">blackreaven</a></small>
 					</p>
@@ -53,7 +53,7 @@
 					<h2>Les outils</h2>
 					<ol>
 							<li class="fragment">Rappel des commande unix</li>
-						    <li class="fragment">Les éditeur en cli</li>
+						    <li class="fragment">Les éditeur en CLI</li>
 							<li class="fragment">Les shells</li>
 							<li class="fragment">SSH</li>
 							<li class="fragment">Les lecteurs de log</li>
@@ -78,21 +78,21 @@
 					<section>
 						<h2>Listing de fichiers</h2>
 						<p>Sur un environnement unix la commande permettant le listing est <code>ls</code>. Voici quelque exemple d'utilisation :</p>
-						<ol>
-							<li><code>ls [pattern]</code> : liste les fichier correspondant au pattern</li>
-							<li><code>ls -1 [pattern]</code> : liste les fichier mais affiche la liste avec 1 item par ligne</li>
-							<li><code>ls -l[h] [pattern]</code> : listing avec un format long</li>
-							<li><code>ls -a [pattern]</code> : listing des fichiers cachés</li>
-							<li><code>ls -R [pattern]</code> : listing récursif</li>
-							<li><code>ls --color=auto [pattern]</code> : Ajout de la coloration</li>
-						</ol>
+						<pre><code class="shell hljs">
+							ls [pattern] # liste les fichier correspondant au pattern
+							ls -1 [pattern] # liste les fichier mais affiche la liste avec 1 item par ligne
+							ls -l[h] [pattern] # listing avec un format long
+							ls -a [pattern] # listing des fichiers cachés
+							ls -R [pattern] # listing récursif
+							ls --color=auto [pattern] # ajout de la coloration
+						</code></pre>
 					</section>
 					<section>
 						<h2>Création/Suppression de fichiers/répertoires</h2>
-						<p>La creéation: <br>
+						<p>La création: <br>
 							<pre><code class="hljs shell">
 touch filename #création d'un fichier vide
-echo "Hello" > filename #remplace le contenu du fcihier
+echo "Hello" > filename #remplace le contenu du fichier
 echo "Hello" >> filename #ajoute le contenu au fichier
 mkdir [-p] dirpath #création d'un répertoire vide.
 							</code></pre>
@@ -108,13 +108,13 @@ rmdir [-p] dirpath #création d'un répertoire vide
 					<section>
 						<h2>Déplacement, liens et copie de fichier</h2>
 						<p>Le déplacement/copie: <br>
-						<pre><code>
+						<pre><code class="hljs shell">
 mv [-v] source destination #déplace source vers destination
 cp [-rv] source destination #déplace source vers destination
 						</code></pre>
 						</p>
 						<p>Les liens : <br>
-						<pre><code>
+						<pre><code class="hljs shell">
 ln [-s] source destination #création d'un lien dans destination qui point sur source
 						</code></pre>
 						</p>
@@ -122,14 +122,14 @@ ln [-s] source destination #création d'un lien dans destination qui point sur s
 					<section>
 						<h2>Affichage et recherche dans des fichier</h2>
 						<p>Affichage du contenu d'un fichier : <br>
-						<pre><code>
+						<pre><code class="hljs shell">
 cat filename #affiche le fichier
 more filename
 less filname
 						</code></pre>
 						</p>
 						<p>Recherche : <br>
-							<pre><code>
+							<pre><code class="hljs shell">
 cat filename | grep search
 cat /var/log/apache2/access.log | cut -d '-' -f1
 cat /var/log/apache2/access.log | awk -F '-' '{print $1}'
@@ -139,10 +139,34 @@ cat /var/log/apache2/access.log | awk -F '-' '{print $1}'
 					</section>
 					<section>
 						<h2>Recherche de fichier</h2>
-						<pre><code>
-# Rechercher un excutable
+						<pre><code class="hljs shell">
+# Rechercher un exécutable
 whereis convert
 
+find /var/log -size +1M -type f
+find . -perm 754
+find . -iname 'log' -maxdepth 2
+find . -name 'log' -maxdepth 2
+find . -user www-data
+find /var/log -size +1G -exec mv '{}' ~/bigfiles \;
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>Gestion des archives</h2>
+						<pre><code class="hljs shell">
+# Extraire un archive
+tar xzvf archive.tar.gz
+# Extraire qu'un seul fichier
+tar xvf archive.tar documents/work/file.txt
+# Ajouter file.txt dans archive.tar
+tar uvf archive.tar documents/work/file.txt
+# Creation d'une archive
+tar cvf archive.tar ~/documents/work/*.txt
+# Creation d'une archive zippé
+tar cvfz archive.tar.gz ~/documents/work/*.txt
+
+unzip archive.zip
 						</code></pre>
 					</section>
 					<section>
@@ -151,7 +175,7 @@ whereis convert
 				</section>
 				<section>
 					<section>
-						<h2>Les éditeur de text cli</h2>
+						<h2>Les éditeur de text CLI</h2>
 						<ol>
 							<li>Vim</li>
 							<li>Nano</li>
@@ -197,11 +221,11 @@ whereis convert
 						## Vim : commande de base
 						| Commande   | Mode    | Action                |
 						|-------------|---------|-----|
-						| `/{text}`       |Commande | recherche  |
+						| `/{text}`       |Commande | Recherche  |
 						| `/` | Commande | Terme suivant de la recherhche |
-						| `:%s/search/replace/g` | Commande | rechercher remplacer |
-						| `:%s/search/replace/gc` | Commande | rechercher remplacer avec confirmation |
-						| `:%s/\\search\\/replace/g` | Commande | rechercher exactement search et le remplacer |
+						| `:%s/search/replace/g` | Commande | Rechercher remplacer |
+						| `:%s/search/replace/gc` | Commande | Rechercher remplacer avec confirmation |
+						| `:%s/\\search\\/replace/g` | Commande | Rechercher exactement search et le remplacer |
 						</script>
 					</section>
 					<section data-markdown>
@@ -209,9 +233,10 @@ whereis convert
 						## Vim : commande de base
 						| Commande   | Mode    | Action                |
 						|-------------|---------|-----|
-						| `gg=G`       |Commande | indentation automatique du fichier |
-						| `Ctrl+n`       |Edition | autocompletion |
-						| :! command | Commande | execution d'une commande shell |
+						| `gg=G`       |Commande | Indentation automatique du fichier |
+						| `Ctrl+n`       |Edition | Autocomplétion |
+						| :! command | Commande | Exécuter une commande ```shell``` |
+
 						</script>
 					</section>
 
@@ -222,7 +247,7 @@ whereis convert
 
 						Le fichier de configuration de vim est $HOME/.vimrc.
 
-						##### Ajouter des raccourci clavier
+						##### Ajouter des raccourcis clavier
 						```
 						:map  -
 						:map! -
@@ -239,33 +264,36 @@ whereis convert
 					<section>
 						<h2>Vim - Plugins</h2>
 						<p>
-							Vim intègre un système de plugin permettant d'étendre ses fonctionnalité
+							Vim intègre un système de plugins permettant d'étendre ses fonctionnalités
 							<ol>
-								<li><strong>Pathogen : </strong> Il permet de simplifier l'installation de plugin</li>
-								<li><strong>NERDTree : </strong> Permet d'avoir un sidebar avec l'arborescences du repertoire</li>
-								<li><strong>Powerline : </strong> Permet d'avoir un sidebar avec l'arborescences du repertoire</li>
-								<li><strong>Fugitive : </strong> Permet d'avoir la gestion de git</li>
+								<li><strong>Pathogen : </strong> permet de simplifier l'installation de plugin</li>
+								<li><strong>NERDTree : </strong> permet d'avoir une sidebar avec l'arborescence du répertoire</li>
+								<li><strong>Powerline : </strong> permet d'avoir un sidebar avec l'arborescence du répertoire</li>
+								<li><strong>Fugitive : </strong> permet d'avoir la gestion de <code>git</code></li>
 							</ol>
 						</p>
 					</section>
 
 					<section>
-						SCREENSHOT comparaison vim et vim configuré
+						<img src="images/vim.png" alt="">
+					</section>
+					<section>
+						<img src="https://raw.githubusercontent.com/humiaozuzu/dot-vimrc/master/screenshots/vim.jpg" alt="">
 					</section>
 					<section>
 						<h2>Nano</h2>
 						<p>
-							Nano est un editeur en ligne de commande plus abordable que vim, mais aussi moins customisable.
+							Nano est un éditeur en ligne de commande plus abordable que vim, mais aussi moins customisable.
 						</p>
 					</section>
 					<section>
 						<h2>Nano - Configuration</h2>
 						<p>
-							La configuration ce passe dans le fichier ~/.nanorc. Un documentation officiel pour la configuration de nano est présente <a href="http://www.nano-editor.org/dist/v2.1/nanorc.5.html">ici</a> (http://www.nano-editor.org/dist/v2.1/nanorc.5.html)
+							La configuration ce passe dans le fichier ~/.nanorc. Une documentation officielle pour la configuration de nano est présente <a href="http://www.nano-editor.org/dist/v2.1/nanorc.5.html">ici</a> (http://www.nano-editor.org/dist/v2.1/nanorc.5.html)
 						</p>
 					</section>
 					<section>
-						SCREENSHOT nano configuré
+						<img src="http://www.linuxsoft.cz/screenshot_img/857-a.jpg" alt="">
 					</section>
 				</section>
 				<section>
@@ -277,43 +305,50 @@ whereis convert
 						* Fish
 						</script>
 					</section>
-					<section data-markdown>
-						<script type="text/template">
-						## Bash
-						Bash est le shell par defaut de nombreuse distribution linux.
-						</script>
+					<section>
+						<h2>Bash</h2>
+						Bash est le shell par défaut de nombreuses distributions Linux. La configuration permet de créer des commandes et alias.
+						<pre><code class="hljs shell">
+alias fuck='sudo !!'
+alias ll='ls -lah'
+alias ezcc='php ezpublish/console cache:clear'
+alias sfcc='php app/console cache:clear'
+						</code></pre>
+						Les petit raccourci bash :
+						<pre><code class="shell hljs">
+							!! # dernière commande
+							!$ # dernier paramètre de la commande précédente
+						</code></pre>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
 						## Zsh
-						Zsh est le shell qui se veut plus user-friendly. Zsh permet de nombreuse customisation et ajout de fonction. La configuration zsh ce fait dans un fichier ```~/.zshrc``.
+						Zsh est le shell qui se veut plus user-friendly. Zsh permet de nombreuses customisations et ajouts de fonction. La configuration zsh se fait dans un fichier ```~/.zshrc``.
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
 						## Zsh : antigen et oh-my-zsh
 
-						Antigen et oh-my-zsh sont des framework de customisation de zsh.
+						Antigen et oh-my-zsh sont des frameworks de customisation de zsh.
 
 						Installation de antigen :
-						```git clone https://github.com/zsh-users/antigen.git ~/.antigen```
+						`git clone https://github.com/zsh-users/antigen.git ~/.antigen`
+
 
 						</script>
 					</section>
-					<section data-markdown>
-						<script type="text/template">
-						## Zsh : antigen et oh-my-zsh
+					<section>
+						<h2>Zsh : antigen et oh-my-zsh</h2>
 
-						Modification .zshrc :
-						```
+						<p>Modification .zshrc :</p>
+						<pre><code class="hljs shell">
 						source ~/.antigen/antigen.zsh
 
 						# Load the oh-my-zsh's library.
 						antigen use oh-my-zsh
-
 						# Bundles from the default repo (robbyrussell's oh-my-zsh).
 						antigen use oh-my-zsh
-
 						antigen bundle git
 						antigen bundle symfony2
 						antigen bundle git-flow
@@ -321,22 +356,18 @@ whereis convert
 						antigen bundle rvm
 						antigen bundle command-not-found
 						antigen bundle zsh-users/zsh-syntax-highlighting
-
 						antigen theme candy
-
 						antigen apply
-						```
-						</script>
+						</code></pre>
 					</section>
 
 					<section data-markdown>
 						<script type="text/template">
 						## Fish
 
-						Fish est un autre shell alternatif qui a plusieur avantage :
-						* La configuration par defaut est correcte
+						Fish est un autre shell alternatif qui a plusieurs avantages :
+						* La configuration par défaut est correcte
 						* Une interface web pour configurer
-
 						</script>
 					</section>
 				</section>
@@ -353,19 +384,19 @@ whereis convert
 						<h2>SSH </h2>
 						<pre><code class="hljs shell">
 # connection ssh de username sur host avec le port
-ssh [-i identity] username@host [-p port] 
-# Tunnel ssh 
+ssh [-i identity] username@host [-p port]
+# Tunnel ssh
 ssh -f -N -L local-port:host:remote-port username@host #tunnel ssh
 						</code></pre>
 					</section>
 
 					<section>
 						<h2>SSH </h2>
-						SSH permet la gestion de clé pour se logger automatiquement
+						SSH permet la gestion de clés pour se logger automatiquement
 						<pre><code class="hljs shell">
 # En local
 mkdir -p ~/.ssh
-ssh-keygen -t rsa 
+ssh-keygen -t rsa
 scp .ssh/[key].pub usernmae@host:~/
 ssh usernmae@host
 
@@ -375,31 +406,31 @@ cat [key].pub >> ~/.ssh/authorized_key
 					</section>
 					<section>
 						<h2>SSH config</h2>
-						La configuration de ssh permet egalement de simplifier la commande de connexion : 
+						La configuration de ssh permet également de simplifier la commande de connexion :
 						<pre><code class="hljs shell">
-# Avant 
+# Avant
 ssh -i ~/.ssh/id_rsa root@server.example.com -p 2222
-# Apres 
-ssh server.example							
+# Apres
+ssh server.example
 						</code></pre>
-						Voici le fichier de config correspondant
+						Voici le fichier de config correspondant :
 						<pre><code class="hljs shell">
 Host server.example
 	HostName server.example.com
 	User root
 	Port 2222
-	IdentityFile ~/.ssh/id_rsa			
+	IdentityFile ~/.ssh/id_rsa
 						</code></pre>
 					</section>
 				</section>
 				<section>
 					<section>
-						<h2>Les lecteur de log </h2>
+						<h2>Les lecteurs de logs </h2>
 						<p>
-							Il existe de nombreux outils qui facilite la gestion/lecture de log.
+							Il existe de nombreux outils qui facilitent la gestion/lecture des logs.
 							<ul>
-								<li>ccze : ajoute de la coloration a vos log</li>
-								<li>glogg : outils graphique</li>
+								<li>ccze : ajoute de la coloration à vos logs</li>
+								<li>glogg : outil graphique</li>
 							</ul>
 						</p>
 					</section>
@@ -436,17 +467,17 @@ ccze -h -o nolookups  &lt;/var/log/mail.log &gt;/var/www/logs/mail.log.html
 					<section>
 						<h2>Glogg</h2>
 						<p>
-							Glogg est un outils graphique qui permet la lecture de log.
+							Glogg est un outil graphique qui permet la lecture de logs.
 							<a href="http://glogg.bonnefon.org/index.html">http://glogg.bonnefon.org/index.html</a>
 							<br>
-							Ces avantages :
+							Ses avantages :
 						</p>
 						<ul>
 							<li>Coloration syntaxique</li>
-							<li>Recherche avec expression regulier</li>
+							<li>Recherche avec expression régulière</li>
 							<li>Lecture directe depuis le disque dur (ne charge pas l'intégralité du fichier)</li>
 						</ul>
-						<p>Le seul inconvénient est que si l'on travaille sur un serveur il faut télécharger le fichier en local </p>
+						<p>Le seul inconvénient est que si l'on travaille sur un serveur, il faut télécharger le fichier en local.</p>
 					</section>
 					<section>
 						<img src="http://glogg.bonnefon.org/images/glogg_gtk.png" alt="">
@@ -457,26 +488,26 @@ ccze -h -o nolookups  &lt;/var/log/mail.log &gt;/var/www/logs/mail.log.html
 						<script type="text/template">
 						## Monitorer sa machine
 
-						* monitoring réseaux
-						* monitoring système
-						* Monitorer avec classe 
+						* Monitoring réseaux
+						* Monitoring système
+						* Monitorer avec classe
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-						## Monitorer son réseaux
-						
-						* _connaitre les connexion ouverte_ : netstat
+						## Monitorer son réseau
+
+						* _connaitre les connexions ouvertes_ : netstat
 						* _tester une connexion_ : netcat/telnet
-						* _savoir quels ports sont ouvert_ : nmap
+						* _savoir quels ports sont ouverts_ : nmap
 						* _connaitre la bande passante consommée_ : slurm
-						* _generer des rapport réseaux_ : vnstat
+						* _générer des rapports réseau_ : vnstat
 						</script>
 					</section>
 					<section>
 						<h2>Netstat</h2>
 						<pre><code class="hljs shell">
-# Toute les connexion
+# toute les connexions
 netstat -a
 # affiche la table de routage
 netstat -r
@@ -491,9 +522,9 @@ netstat -s
 						<pre><code class="hljs shell">
 # connexion avec netcat
 nc -u host port
-# connexion avec telnet 
+# connexion avec telnet
 telnet host port
-# 
+#
 nc -l port
 						</code></pre>
 					</section>
@@ -510,7 +541,7 @@ nmap -sS host [-p port]
 # connexion avec netcat
 slurm -i interface
 
-# Déclaration de l'interface réseaux
+# déclaration de l'interface réseau
 sudo vnstat -u -i eth0 --nick "Internet"
 
 sudo vnstat
@@ -520,13 +551,20 @@ sudo vnstat -tr
 					<section>
 						<h2>Monitoring système</h2>
 						<pre><code>
-# Information sur la ram
+# informations sur la RAM
 free -th
 
-# Top ou htop - consomation mémoire par processus
-top 
+# top ou htop - consommation mémoire par processus
+top
 						</code></pre>
 					</section>
+
+					<section>
+						<img src="http://fc06.deviantart.net/fs70/f/2010/219/1/e/Conky__Conky__Conky_by_YesThisIsMe.png" alt="">
+					</section>
+				</section>
+				<section>
+					<h1>Question ?</h1>
 				</section>
 			</div>
 

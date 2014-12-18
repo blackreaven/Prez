@@ -1,0 +1,8 @@
+step 1 :
+    - Solde fidelité négatif : "Votre numéro de carte de fidélité semble erroné. Merci de vous rendre en magasin ou contactez le service client"
+    - SoapFault ws intranet : Une erreur est survenue empêchant le traitement de vôtre requête.
+    - %string% n'est pas un numéro de carte de fidélité valide. : numéros de carte non valide saisie
+step 3 :
+    - SoapFault ws intranet : Une erreur est survenue empêchant le traitement de vôtre requête.
+modify :
+    - SoapFault ws intranet : Une erreur est survenue empêchant le traitement de vôtre requête.
