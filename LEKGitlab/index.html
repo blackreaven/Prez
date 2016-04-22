@@ -154,23 +154,23 @@ Toute la configuration de logstash est dans un repertoire : `/etc/logstash/conf.
 						<script type="text/template">
 ### Logstash - Configuration
 
-						input {
-file {
-	path => "/var/log/apache2/error.log"
-	start_position => beginning
-						    }
-						}
-						filter {
-						    grok {
-	match => { "message" => "%{COMBINEDAPACHELOG}"}
-						    }
-						}
-						output {
-						    elasticsearch {
-						    	host => localhost
-						    	index => test
-						    }
-						}
+	input {
+		file {
+			path => "/var/log/apache2/error.log"
+			start_position => beginning
+		}
+	}
+	filter {
+		grok {
+			match => { "message" => "%{COMBINEDAPACHELOG}"}
+		}
+	}
+	output {
+		elasticsearch {
+			host => localhost
+			index => test
+		}
+	}
 					    </script>
 					</section>
 				</section>
