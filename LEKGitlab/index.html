@@ -42,109 +42,109 @@
 			<div class="slides">
 				<section data-markdown>
 					<script type="text/template">
-						# ELK & Gitlab
+# ELK & Gitlab
 
-				        Elasticsearch Logstash Kibana & Gitlab [@blackreaven](http://github.com/blackreaven).
+Elasticsearch Logstash Kibana & Gitlab [@blackreaven](http://github.com/blackreaven).
 				    </script>
 				</section>
 				<section data-markdown>
 					<script type="text/template">
-				        ## ELK
+## ELK
 
-				        * Elasticsearch
-				        * Logstash
-				        * Kibana
-				        * Architecture(s)
+* Elasticsearch
+* Logstash
+* Kibana
+* Architecture(s)
 	
 				    </script>
 				</section>
 				<section>
 					<section data-markdown>
 						<script type="text/template">
-					        ## Elasticsearch
+## Elasticsearch
 
-					        * Présentation
-					        * Installation
-					        * Configuration
+* Présentation
+* Installation
+* Configuration
 
-					        <img src="img/elasticsearch.png" width="200" alt="" />
+<img src="img/elasticsearch.png" width="200" alt="" />
 					    </script>
 					</section>
 				    <section data-markdown>
 						<script type="text/template">
-					        ### Elasticsearch - Présentation
+### Elasticsearch - Présentation
 
-					        Elasticsearch est un moteur de recherche basé sur Apache Lucene. 
-					        Fontionnalitées:
-					        * Distribué
-					        * Scalable
-					        * Haute disponibilité
-					        * Recherche en temps réel
-					        * RESTFul Api
-					        * Ajout de fonctionnalité avec des plugins
+Elasticsearch est un moteur de recherche basé sur Apache Lucene. 
+Fontionnalitées:
+* Distribué
+* Scalable
+* Haute disponibilité
+* Recherche en temps réel
+* RESTFul Api
+* Ajout de fonctionnalité avec des plugins
 					    </script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-					        ### Elasticsearch - Installation
+### Elasticsearch - Installation
 
-					        Documentation d'installation [ici](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html)
+Documentation d'installation [ici](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html)
 
-					        * Gestionnaire de paquets des distribution linux (.deb, .rpm)
-					        * Installation depuis les sources
-					        * Container Docker (voir [hub.docker.com](https://hub.docker.com/_/elasticsearch/))
+* Gestionnaire de paquets des distribution linux (.deb, .rpm)
+* Installation depuis les sources
+* Container Docker (voir [hub.docker.com](https://hub.docker.com/_/elasticsearch/))
 					    </script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-					        ### Elasticsearch - Configuration
+### Elasticsearch - Configuration
 
-					        * Activation du plugin [Shield](https://www.elastic.co/downloads/shield)
-					        	* Sécurisation de l'acces au donnée
-					        * Activation du plugin [Marvel](https://www.elastic.co/downloads/marvel)
-					        	* Permet de monitoring
+* Activation du plugin [Shield](https://www.elastic.co/downloads/shield)
+	* Sécurisation de l'acces au donnée
+* Activation du plugin [Marvel](https://www.elastic.co/downloads/marvel)
+	* Permet de monitoring
 					    </script>
 					</section>
 				</section>
 				<section>
 				    <section data-markdown>
 						<script type="text/template">
-					        ## Logstash
+## Logstash
 
-					        * Présentation
-					        * Installation
-					        * Configuration
+* Présentation
+* Installation
+* Configuration
 
-					        <img src="img/logstash.png" width="200" alt="" />
+<img src="img/logstash.png" width="200" alt="" />
 					    </script>
 					</section>
 				    <section data-markdown>
 						<script type="text/template">
-					        ### Logstash - Présentation
+### Logstash - Présentation
 
-					        Logstash est un parseur de fichier, souvent de log, ou de flux. Il est capable de gerer différent format/ protocole en entrée, de réalisé différents traitements, et d'envoyé le resultat des traitements dans un fichier, un flux.
-							Fontionnalitées:
+Logstash est un parseur de fichier, souvent de log, ou de flux. Il est capable de gerer différent format/ protocole en entrée, de réalisé différents traitements, et d'envoyé le resultat des traitements dans un fichier, un flux.
+Fontionnalitées:
 
-							* Traitement des logs en temps réel
-							* Filtrage et mise en forme des logs
-							* Externalisation des logs
+* Traitement des logs en temps réel
+* Filtrage et mise en forme des logs
+* Externalisation des logs
 					    </script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-					        ### Logstash - Installation
+### Logstash - Installation
 
-					        Documentation d'installation [ici](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html)
+Documentation d'installation [ici](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html)
 
-					        * Gestionnaire de paquets des distribution linux (.deb, .rpm)
-					        * Installation depuis les sources
+* Gestionnaire de paquets des distribution linux (.deb, .rpm)
+* Installation depuis les sources
 					    </script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-					        ### Logstash - Configuration
+### Logstash - Configuration
 
-					        Toute la configuration de logstash est dans un repertoire : `/etc/logstash/conf.d/*.conf`
+Toute la configuration de logstash est dans un repertoire : `/etc/logstash/conf.d/*.conf`
 
 
 					    </script>
@@ -152,17 +152,17 @@
 
 					<section data-markdown>
 						<script type="text/template">
-					        ### Logstash - Configuration
-					        
+### Logstash - Configuration
+
 						input {
-							file {
-								path => "/var/log/apache2/error.log"
-								start_position => beginning
+file {
+	path => "/var/log/apache2/error.log"
+	start_position => beginning
 						    }
 						}
 						filter {
 						    grok {
-								match => { "message" => "%{COMBINEDAPACHELOG}"}
+	match => { "message" => "%{COMBINEDAPACHELOG}"}
 						    }
 						}
 						output {
@@ -177,18 +177,18 @@
 				<section>
 					<section data-markdown>
 						<script type="text/template">
-							## Kibana
+## Kibana
 
-							* Presentation
-							* Installation
+* Presentation
+* Installation
 						
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							### Kibana - Présentation 
+### Kibana - Présentation 
 						
-							Kibana est une plateforme d'analyse et de visualisation de donnée. 
+Kibana est une plateforme d'analyse et de visualisation de donnée. 
 
 						</script>
 					</section>
@@ -208,48 +208,48 @@
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							### Kibana - Installation 
+### Kibana - Installation 
 						
-							Docummentation d'insatllation [ici](https://www.elastic.co/guide/en/kibana/current/setup.html)
-							
-							* Gestionnaire de paquets des distribution linux (.deb, .rpm)
-							* Installation depuis les sources
-							* Container Docker (voir [hub.docker.com](https://hub.docker.com/_/kibana/))
-						</script>
-					</section>
-				</section>
-				<section>
-					<section data-markdown>
-						<script type="text/template">
-							## Architecture
+Docummentation d'insatllation [ici](https://www.elastic.co/guide/en/kibana/current/setup.html)
 
-							* Architecture simple
-							* Architecture évoluée
+* Gestionnaire de paquets des distribution linux (.deb, .rpm)
+* Installation depuis les sources
+* Container Docker (voir [hub.docker.com](https://hub.docker.com/_/kibana/))
 						</script>
 					</section>
 				</section>
 				<section>
 					<section data-markdown>
 						<script type="text/template">
-							# Questions ?
-						</script>
-					</section>
-				</section>
-				<section>
-					<section data-markdown>
-						<script type="text/template">
-							# Gitlab
-						</script>
-					</section>
-				</section>
-				<section>
-					<section data-markdown>
-						<script type="text/template">
-							## Gitlab
+## Architecture
 
-							* Présentation
-							* Installation
-							* Avantage
+* Architecture simple
+* Architecture évoluée
+						</script>
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+# Questions ?
+						</script>
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+# Gitlab
+						</script>
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+## Gitlab
+
+* Présentation
+* Installation
+* Avantage
 						</script>
 					</section>
 				</section>
